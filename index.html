@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sang Won Kim | 3D Game Environment & Prop Artist</title>
+    <meta
+      name="description"
+      content="Portfolio of Sang Won Kim, a 3D game environment and prop artist focused on cinematic props, worn materials, and game-ready presentation."
+    >
+    <meta name="theme-color" content="#0c0b09">
+    <meta property="og:title" content="Sang Won Kim | 3D Game Environment & Prop Artist">
+    <meta
+      property="og:description"
+      content="3D game art portfolio featuring hard-surface props, textured materials, and environment assets."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="portfolio/Axegun/1.png">
+    <link rel="preload" href="portfolio/Axegun/1.png" as="image" fetchpriority="high">
+    <link rel="stylesheet" href="styles.css">
+    <script src="site-data.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#work">Skip to work</a>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="Sang Won Kim home">
+        <span class="brand-mark">SWK</span>
+        <span class="brand-text">
+          <span data-artist-name>Sang Won Kim</span>
+          <span data-role>3D Game Environment & Prop Artist</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact" data-contact-nav>Contact</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <img
+          class="hero-image"
+          src="portfolio/Axegun/1.png"
+          alt="Axegun 3D prop render with weathered metal, wood, and leather materials"
+          loading="eager"
+          fetchpriority="high"
+        >
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Game-ready props and environments</p>
+          <h1 id="hero-title" data-hero-title>Sang Won Kim</h1>
+          <p class="hero-role" data-hero-role>3D Game Environment & Prop Artist</p>
+          <p class="hero-copy" data-hero-copy>
+            I build grounded 3D assets with readable silhouettes, tactile surface wear, and cinematic presentation for game worlds.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#work">View Work</a>
+            <a class="button button-secondary" href="#about">About</a>
+          </div>
+        </div>
+        <a class="scroll-cue" href="#work" aria-label="Scroll to portfolio work">
+          <span>Work</span>
+          <span aria-hidden="true">&darr;</span>
+        </a>
+      </section>
+
+      <section class="section work-section" id="work" aria-labelledby="work-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="eyebrow">Selected work</p>
+            <h2 id="work-title">Portfolio</h2>
+            <p>
+              A focused set of hard-surface props, textured objects, and natural assets presented through final renders.
+            </p>
+          </div>
+          <div class="project-grid" data-project-grid></div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="section-inner about-layout">
+          <figure class="portrait-frame">
+            <img
+              src="About/profile.png"
+              alt="Portrait of Sang Won Kim"
+              loading="lazy"
+            >
+          </figure>
+          <div class="about-copy">
+            <p class="eyebrow">About</p>
+            <h2 id="about-title" data-about-title>3D Artist focused on believable game assets</h2>
+            <p data-about-copy>
+              I create 3D props and environment assets with attention to material storytelling, surface breakup, and presentation lighting.
+            </p>
+            <div class="skill-list" data-skill-list aria-label="Skills and tools"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact" aria-labelledby="contact-title" data-contact-section>
+        <div class="section-inner contact-layout">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 id="contact-title">Available for portfolio review and opportunities.</h2>
+          </div>
+          <div class="contact-links" data-contact-links></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; <span data-year></span> <span data-footer-name>Sang Won Kim</span>. All images and artwork reserved.</p>
+    </footer>
+
+    <div class="modal" data-modal aria-hidden="true">
+      <div class="modal-backdrop" data-modal-close></div>
+      <article
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+        aria-describedby="modal-description"
+      >
+        <button class="icon-button modal-close" type="button" data-modal-close aria-label="Close project" title="Close">
+          &times;
+        </button>
+        <div class="modal-media">
+          <img data-modal-image src="" alt="">
+          <button class="icon-button modal-arrow modal-prev" type="button" data-prev aria-label="Previous image" title="Previous image">
+            &larr;
+          </button>
+          <button class="icon-button modal-arrow modal-next" type="button" data-next aria-label="Next image" title="Next image">
+            &rarr;
+          </button>
+        </div>
+        <div class="modal-info">
+          <div>
+            <p class="eyebrow" data-modal-category></p>
+            <h2 id="modal-title" data-modal-title></h2>
+            <p id="modal-description" data-modal-description></p>
+          </div>
+          <div class="modal-meta">
+            <span data-modal-count></span>
+            <span data-modal-year></span>
+          </div>
+        </div>
+        <div class="thumbnail-strip" data-thumbnail-strip aria-label="Project images"></div>
+      </article>
+    </div>
+  </body>
+</html>
