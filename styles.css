@@ -304,6 +304,10 @@ h1 {
   max-width: var(--max);
 }
 
+.work-section .section-inner {
+  max-width: min(1760px, 100%);
+}
+
 .section-heading {
   display: grid;
   gap: 1rem;
@@ -329,8 +333,8 @@ h1 {
 
 .project-grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .project-card {
@@ -359,9 +363,10 @@ h1 {
 }
 
 .project-cover {
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   background: #080705;
   overflow: hidden;
+  position: relative;
 }
 
 .project-cover img {
@@ -372,39 +377,32 @@ h1 {
 }
 
 .project-card:hover .project-cover img {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-.project-card-content {
-  display: grid;
-  gap: 0.7rem;
-  padding: 1rem;
-}
-
-.project-card-topline {
+.project-title-overlay {
   align-items: center;
-  color: var(--green);
-  display: flex;
-  font-size: 0.72rem;
-  font-weight: 900;
-  gap: 0.5rem;
-  justify-content: space-between;
-  text-transform: uppercase;
-}
-
-.project-card h3 {
+  background: rgba(12, 11, 9, 0.58);
   color: var(--ink);
-  font-size: clamp(1.05rem, 2.4vw, 1.38rem);
-  line-height: 1.08;
+  display: flex;
+  font-size: clamp(1.25rem, 3.2vw, 3rem);
+  font-weight: 900;
+  inset: 0;
+  justify-content: center;
+  line-height: 1;
   margin: 0;
+  opacity: 0;
   overflow-wrap: anywhere;
+  padding: 1.5rem;
+  position: absolute;
+  text-align: center;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.8);
+  transition: opacity 180ms ease;
 }
 
-.project-card p {
-  color: var(--muted);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  margin: 0;
+.project-card:hover .project-title-overlay,
+.project-card:focus-visible .project-title-overlay {
+  opacity: 1;
 }
 
 .about-section {
@@ -651,7 +649,7 @@ h1 {
   }
 
   .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
   }
 
   .about-layout,
@@ -661,6 +659,12 @@ h1 {
 
   .contact-links {
     justify-content: flex-start;
+  }
+}
+
+@media (hover: none) {
+  .project-title-overlay {
+    opacity: 1;
   }
 }
 
@@ -703,10 +707,6 @@ h1 {
 
   .hero-image {
     object-position: 53% 50%;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
   }
 
   .modal-dialog {

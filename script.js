@@ -122,15 +122,10 @@
       }
       cover.append(image);
 
-      const content = createElement("div", "project-card-content");
-      const topline = createElement("div", "project-card-topline");
-      topline.append(createElement("span", "", project.category));
-      topline.append(createElement("span", "", `${project.images.length} images`));
-
       const title = createElement("h3", "", project.title);
-      const description = createElement("p", "", project.description);
-      content.append(topline, title, description);
-      card.append(cover, content);
+      title.className = "project-title-overlay";
+      cover.append(title);
+      card.append(cover);
       card.addEventListener("click", () => openProject(projectIndex, 0));
       selectors.projectGrid.append(card);
     });
