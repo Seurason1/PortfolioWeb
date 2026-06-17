@@ -198,9 +198,56 @@
     const project = data.projects[state.activeProjectIndex];
     const imagePath = project.images[state.activeImageIndex];
 
+    resetModalImageZoom();
     selectors.modalImage.src = imagePath;
     selectors.modalImage.alt = getProjectImageAlt(project, state.activeImageIndex);
     selectors.modalCount.textContent = `${state.activeImageIndex + 1} / ${project.images.length}`;
+  }
+
+  function canZoomModalImage() {
+    const image = selectors.modalImage;
+    const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    return (
+      hasFinePointer &&
+      image.complete &&
+      (image.naturalWidth > image.clientWidth || image.naturalHeight > image.clientHeight)
+    );
+  }
+
+  function updateModalImageZoomPosition(event) {
+    if (!canZoomModalImage()) {
+      return;
+    }
+
+    const rect = selectors.modalImage.getBoundingClientRect();
+    const x = Math.min(Math.max(((event.clientX - rect.left) / rect.width) * 100, 0), 100);
+    const y = Math.min(Math.max(((event.clientY - rect.top) / rect.height) * 100, 0), 100);
+
+    selectors.modalImage.style.objectPosition = `${x}% ${y}%`;
+  }
+
+  function handleModalImageZoomStart(event) {
+    if (!canZoomModalImage()) {
+      return;
+    }
+
+    selectors.modalImage.classList.add("is-zoomed");
+    updateModalImageZoomPosition(event);
+  }
+
+  function handleModalImageZoomMove(event) {
+    if (!selectors.modalImage.classList.contains("is-zoomed")) {
+      handleModalImageZoomStart(event);
+      return;
+    }
+
+    updateModalImageZoomPosition(event);
+  }
+
+  function resetModalImageZoom() {
+    selectors.modalImage.classList.remove("is-zoomed");
+    selectors.modalImage.style.objectPosition = "";
   }
 
   function renderThumbnails() {
@@ -259,6 +306,13 @@
     const nextButton = selectors.modal.querySelector("[data-next]");
     previousButton.addEventListener("click", () => moveImage(-1));
     nextButton.addEventListener("click", () => moveImage(1));
+    selectors.modalImage.addEventListener("pointerenter", handleModalImageZoomStart);
+    selectors.modalImage.addEventListener("pointermove", handleModalImageZoomMove);
+    selectors.modalImage.addEventListener("pointerleave", resetModalImageZoom);
+    selectors.modalImage.addEventListener("mouseenter", handleModalImageZoomStart);
+    selectors.modalImage.addEventListener("mousemove", handleModalImageZoomMove);
+    selectors.modalImage.addEventListener("mouseleave", resetModalImageZoom);
+    selectors.modalImage.addEventListener("load", resetModalImageZoom);
 
     window.addEventListener("keydown", handleKeyboard);
     window.addEventListener("scroll", handleHeaderState, { passive: true });

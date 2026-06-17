@@ -555,9 +555,16 @@ h1 {
 }
 
 .modal-media img {
+  cursor: zoom-in;
   height: min(66vh, 690px);
   object-fit: contain;
+  object-position: 50% 50%;
   width: 100%;
+}
+
+.modal-media img.is-zoomed {
+  cursor: zoom-out;
+  object-fit: none;
 }
 
 .modal-arrow {
@@ -708,6 +715,7 @@ h1 {
   }
 
   .modal-media img {
+    cursor: default;
     height: 52vh;
   }
 
