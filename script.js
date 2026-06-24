@@ -117,6 +117,13 @@
         cover.classList.add("project-cover-framed");
         cover.style.aspectRatio = project.thumbnailRatio;
       }
+      if (project.thumbnailScale) {
+        const thumbnailScale = Number(project.thumbnailScale);
+        if (Number.isFinite(thumbnailScale)) {
+          cover.style.setProperty("--thumbnail-scale", String(thumbnailScale));
+          cover.style.setProperty("--thumbnail-hover-scale", String(thumbnailScale + 0.06));
+        }
+      }
 
       const image = document.createElement("img");
       image.src = project.cover;

@@ -36,6 +36,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Axegun/1.png",
       thumbnailRatio: "16 / 9",
       thumbnailPosition: "50% 50%",
+      thumbnailScale: 1.22,
       images: [
         "portfolio/Axegun/1.png",
         "portfolio/Axegun/2.png",
@@ -55,6 +56,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Chesterfield chair/1.png",
       thumbnailRatio: "4 / 5",
       thumbnailPosition: "50% 48%",
+      thumbnailScale: 1.34,
       images: [
         "portfolio/Chesterfield chair/1.png",
         "portfolio/Chesterfield chair/2.png",
@@ -72,6 +74,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Hand Drill/5 (1).png",
       thumbnailRatio: "5 / 4",
       thumbnailPosition: "58% 50%",
+      thumbnailScale: 1.28,
       images: [
         "portfolio/Hand Drill/5 (1).png",
         "portfolio/Hand Drill/5 (2).png",
@@ -90,6 +93,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Post apocalypse Knife/2 (1).png",
       thumbnailRatio: "21 / 10",
       thumbnailPosition: "50% 50%",
+      thumbnailScale: 1.18,
       images: [
         "portfolio/Post apocalypse Knife/2 (1).png",
         "portfolio/Post apocalypse Knife/2 (2).png",
@@ -107,6 +111,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Rocks/1.png",
       thumbnailRatio: "1 / 1",
       thumbnailPosition: "48% 52%",
+      thumbnailScale: 1.38,
       images: [
         "portfolio/Rocks/1.png",
         "portfolio/Rocks/2 (1).png",
@@ -128,6 +133,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Vintage Telephone/0 (1).png",
       thumbnailRatio: "4 / 3",
       thumbnailPosition: "50% 50%",
+      thumbnailScale: 1.3,
       images: [
         "portfolio/Vintage Telephone/0 (1).png",
         "portfolio/Vintage Telephone/0 (2).png"
@@ -143,6 +149,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Wood chair/1.png",
       thumbnailRatio: "7 / 9",
       thumbnailPosition: "50% 45%",
+      thumbnailScale: 1.42,
       images: [
         "portfolio/Wood chair/1.png",
         "portfolio/Wood chair/2.png",
