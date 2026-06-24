@@ -333,18 +333,18 @@ h1 {
 
 .project-grid {
   --project-grid-gap: clamp(1rem, 2vw, 1.5rem);
-  align-items: start;
+  column-count: 3;
   column-gap: var(--project-grid-gap);
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  row-gap: var(--project-grid-gap);
 }
 
 .project-card {
   background: var(--bg-raised);
   border: 1px solid var(--line);
   border-radius: 8px;
+  break-inside: avoid;
   cursor: pointer;
+  display: inline-block;
+  margin: 0 0 var(--project-grid-gap);
   min-width: 0;
   overflow: hidden;
   padding: 0;
@@ -353,6 +353,7 @@ h1 {
     border-color 180ms ease,
     transform 180ms ease,
     box-shadow 180ms ease;
+  width: 100%;
 }
 
 .project-card:hover {
@@ -658,7 +659,7 @@ h1 {
   }
 
   .project-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-count: 2;
   }
 
   .about-layout,
@@ -719,7 +720,7 @@ h1 {
   }
 
   .project-grid {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 
   .modal-dialog {
