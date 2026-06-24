@@ -332,9 +332,10 @@ h1 {
 }
 
 .project-grid {
+  align-items: start;
   display: grid;
   gap: clamp(1rem, 2vw, 1.5rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .project-card {
@@ -363,15 +364,13 @@ h1 {
 }
 
 .project-cover {
-  aspect-ratio: 16 / 9;
   background: #080705;
   overflow: hidden;
   position: relative;
 }
 
 .project-cover img {
-  height: 100%;
-  object-fit: cover;
+  height: auto;
   transition: transform 280ms ease;
   width: 100%;
 }
@@ -649,7 +648,7 @@ h1 {
   }
 
   .project-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .about-layout,
@@ -707,6 +706,10 @@ h1 {
 
   .hero-image {
     object-position: 53% 50%;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
   }
 
   .modal-dialog {
