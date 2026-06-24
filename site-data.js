@@ -34,6 +34,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A hybrid weapon prop built around a strong silhouette, worn metal, aged wood, and leather material contrast.",
       cover: "portfolio/Axegun/1.png",
+      thumbnailRatio: "16 / 9",
+      thumbnailPosition: "50% 50%",
       images: [
         "portfolio/Axegun/1.png",
         "portfolio/Axegun/2.png",
@@ -51,6 +53,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A vintage seating asset focused on leather surface variation, soft volume, and believable wear for an interior scene.",
       cover: "portfolio/Chesterfield chair/1.png",
+      thumbnailRatio: "4 / 5",
+      thumbnailPosition: "50% 48%",
       images: [
         "portfolio/Chesterfield chair/1.png",
         "portfolio/Chesterfield chair/2.png",
@@ -66,6 +70,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A compact mechanical tool study with layered grime, scratched metal, and small construction details.",
       cover: "portfolio/Hand Drill/5 (1).png",
+      thumbnailRatio: "5 / 4",
+      thumbnailPosition: "58% 50%",
       images: [
         "portfolio/Hand Drill/5 (1).png",
         "portfolio/Hand Drill/5 (2).png",
@@ -82,6 +88,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A rugged survival knife prop shaped by improvised construction, chipped edges, and post-apocalyptic material wear.",
       cover: "portfolio/Post apocalypse Knife/2 (1).png",
+      thumbnailRatio: "21 / 10",
+      thumbnailPosition: "50% 50%",
       images: [
         "portfolio/Post apocalypse Knife/2 (1).png",
         "portfolio/Post apocalypse Knife/2 (2).png",
@@ -97,6 +105,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A set of natural rock assets exploring sculpted forms, surface breakup, and reusable environment set dressing.",
       cover: "portfolio/Rocks/1.png",
+      thumbnailRatio: "1 / 1",
+      thumbnailPosition: "48% 52%",
       images: [
         "portfolio/Rocks/1.png",
         "portfolio/Rocks/2 (1).png",
@@ -116,6 +126,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A vintage object study emphasizing old plastic, metal accents, and a readable prop silhouette.",
       cover: "portfolio/Vintage Telephone/0 (1).png",
+      thumbnailRatio: "4 / 3",
+      thumbnailPosition: "50% 50%",
       images: [
         "portfolio/Vintage Telephone/0 (1).png",
         "portfolio/Vintage Telephone/0 (2).png"
@@ -129,6 +141,8 @@ window.PORTFOLIO_DATA = {
       description:
         "A worn wooden chair asset presented with close-up material shots, fabric detail, and atmospheric scene framing.",
       cover: "portfolio/Wood chair/1.png",
+      thumbnailRatio: "7 / 9",
+      thumbnailPosition: "50% 45%",
       images: [
         "portfolio/Wood chair/1.png",
         "portfolio/Wood chair/2.png",

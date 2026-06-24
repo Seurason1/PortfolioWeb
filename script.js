@@ -113,9 +113,17 @@
       card.dataset.projectIndex = String(projectIndex);
 
       const cover = createElement("div", "project-cover");
+      if (project.thumbnailRatio) {
+        cover.classList.add("project-cover-framed");
+        cover.style.aspectRatio = project.thumbnailRatio;
+      }
+
       const image = document.createElement("img");
       image.src = project.cover;
       image.alt = `${project.title} cover render`;
+      if (project.thumbnailPosition) {
+        image.style.objectPosition = project.thumbnailPosition;
+      }
       image.loading = projectIndex === 0 ? "eager" : "lazy";
       if (projectIndex === 0) {
         image.fetchPriority = "high";
