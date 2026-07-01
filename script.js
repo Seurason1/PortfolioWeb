@@ -14,7 +14,8 @@
     imageDragStartX: 0,
     imageDragStartY: 0,
     imageDragScrollLeft: 0,
-    imageDragScrollTop: 0
+    imageDragScrollTop: 0,
+    suppressZoomClick: false
   };
 
   const selectors = {
@@ -379,6 +380,11 @@
       return;
     }
 
+    if (state.suppressZoomClick) {
+      state.suppressZoomClick = false;
+      return;
+    }
+
     if (state.imageDragMoved) {
       state.imageDragMoved = false;
       return;
@@ -464,11 +470,20 @@
       return;
     }
 
+    const wasDragged = state.imageDragMoved;
     state.imageDragActive = false;
     state.imageDragPointerId = null;
     selectors.modalStage.classList.remove("is-dragging");
     if (selectors.modalStage.hasPointerCapture(event.pointerId)) {
       selectors.modalStage.releasePointerCapture(event.pointerId);
+    }
+
+    if (!wasDragged) {
+      state.suppressZoomClick = true;
+      resetModalImageZoom();
+      window.setTimeout(() => {
+        state.suppressZoomClick = false;
+      }, 0);
     }
   }
 
