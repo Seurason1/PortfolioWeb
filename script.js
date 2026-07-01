@@ -398,11 +398,15 @@
     window.requestAnimationFrame(() => {
       selectors.modalStage.scrollLeft = Math.max(
         0,
-        selectors.modalImage.offsetWidth * focusX - selectors.modalStage.clientWidth / 2
+        selectors.modalImage.offsetLeft +
+          selectors.modalImage.offsetWidth * focusX -
+          selectors.modalStage.clientWidth / 2
       );
       selectors.modalStage.scrollTop = Math.max(
         0,
-        selectors.modalImage.offsetHeight * focusY - selectors.modalStage.clientHeight / 2
+        selectors.modalImage.offsetTop +
+          selectors.modalImage.offsetHeight * focusY -
+          selectors.modalStage.clientHeight / 2
       );
     });
   }
@@ -422,7 +426,8 @@
     if (
       event.button !== 0 ||
       !selectors.modalImage.classList.contains("is-zoomed") ||
-      event.target !== selectors.modalImage
+      selectors.modalImage.hidden ||
+      event.target.closest("button, video")
     ) {
       return;
     }
@@ -564,6 +569,7 @@
     selectors.previousProject.addEventListener("click", () => moveProject(-1));
     selectors.nextProject.addEventListener("click", () => moveProject(1));
     selectors.modalImage.addEventListener("click", toggleModalImageZoom);
+    selectors.modalImage.addEventListener("dragstart", (event) => event.preventDefault());
     selectors.modalStage.addEventListener("pointerdown", handleImageDragStart);
     selectors.modalStage.addEventListener("pointermove", handleImageDragMove);
     selectors.modalStage.addEventListener("pointerup", handleImageDragEnd);

@@ -133,8 +133,10 @@
         </button>
         <div class="modal-media" data-modal-media>
           <div class="modal-stage" data-modal-stage>
-            <img data-modal-image alt="">
-            <video data-modal-video muted loop playsinline controls preload="metadata" hidden></video>
+            <div class="modal-canvas" data-modal-canvas>
+              <img data-modal-image alt="" draggable="false">
+              <video data-modal-video muted loop playsinline controls preload="metadata" hidden></video>
+            </div>
           </div>
           <button class="icon-button modal-arrow modal-prev" type="button" data-prev aria-label="Previous project" title="Previous project">
             &#9664;
