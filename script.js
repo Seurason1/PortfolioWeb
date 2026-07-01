@@ -7,7 +7,14 @@
     masonryColumnCount: 0,
     projectCards: [],
     resizeFrame: 0,
-    wheelTimer: 0
+    wheelTimer: 0,
+    imageDragActive: false,
+    imageDragMoved: false,
+    imageDragPointerId: null,
+    imageDragStartX: 0,
+    imageDragStartY: 0,
+    imageDragScrollLeft: 0,
+    imageDragScrollTop: 0
   };
 
   const selectors = {
@@ -372,6 +379,11 @@
       return;
     }
 
+    if (state.imageDragMoved) {
+      state.imageDragMoved = false;
+      return;
+    }
+
     const rect = selectors.modalImage.getBoundingClientRect();
     const isZoomed = selectors.modalImage.classList.contains("is-zoomed");
     if (isZoomed) {
@@ -396,10 +408,63 @@
   }
 
   function resetModalImageZoom() {
+    state.imageDragActive = false;
+    state.imageDragMoved = false;
+    state.imageDragPointerId = null;
     selectors.modalStage.classList.remove("is-zoomed");
+    selectors.modalStage.classList.remove("is-dragging");
     selectors.modalImage.classList.remove("is-zoomed");
     selectors.modalStage.scrollLeft = 0;
     selectors.modalStage.scrollTop = 0;
+  }
+
+  function handleImageDragStart(event) {
+    if (
+      event.button !== 0 ||
+      !selectors.modalImage.classList.contains("is-zoomed") ||
+      event.target !== selectors.modalImage
+    ) {
+      return;
+    }
+
+    state.imageDragActive = true;
+    state.imageDragMoved = false;
+    state.imageDragPointerId = event.pointerId;
+    state.imageDragStartX = event.clientX;
+    state.imageDragStartY = event.clientY;
+    state.imageDragScrollLeft = selectors.modalStage.scrollLeft;
+    state.imageDragScrollTop = selectors.modalStage.scrollTop;
+    selectors.modalStage.classList.add("is-dragging");
+    selectors.modalStage.setPointerCapture(event.pointerId);
+  }
+
+  function handleImageDragMove(event) {
+    if (!state.imageDragActive || event.pointerId !== state.imageDragPointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - state.imageDragStartX;
+    const deltaY = event.clientY - state.imageDragStartY;
+    if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) {
+      state.imageDragMoved = true;
+    }
+
+    selectors.modalStage.scrollLeft = state.imageDragScrollLeft - deltaX;
+    selectors.modalStage.scrollTop = state.imageDragScrollTop - deltaY;
+    event.preventDefault();
+  }
+
+  function handleImageDragEnd(event) {
+    if (!state.imageDragActive || event.pointerId !== state.imageDragPointerId) {
+      return;
+    }
+
+    state.imageDragActive = false;
+    state.imageDragPointerId = null;
+    selectors.modalStage.classList.remove("is-dragging");
+    if (selectors.modalStage.hasPointerCapture(event.pointerId)) {
+      selectors.modalStage.releasePointerCapture(event.pointerId);
+    }
   }
 
   function updateProjectNavigation() {
@@ -499,6 +564,10 @@
     selectors.previousProject.addEventListener("click", () => moveProject(-1));
     selectors.nextProject.addEventListener("click", () => moveProject(1));
     selectors.modalImage.addEventListener("click", toggleModalImageZoom);
+    selectors.modalStage.addEventListener("pointerdown", handleImageDragStart);
+    selectors.modalStage.addEventListener("pointermove", handleImageDragMove);
+    selectors.modalStage.addEventListener("pointerup", handleImageDragEnd);
+    selectors.modalStage.addEventListener("pointercancel", handleImageDragEnd);
     selectors.modalMedia.addEventListener("wheel", handleModalWheel, { passive: false });
 
     window.addEventListener("keydown", handleKeyboard);

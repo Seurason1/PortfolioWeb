@@ -569,10 +569,21 @@ h1 {
   width: 100%;
 }
 
+.modal-stage [hidden] {
+  display: none;
+}
+
 .modal-stage.is-zoomed {
   align-items: start;
+  cursor: grab;
   display: block;
   overflow: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.modal-stage.is-dragging {
+  cursor: grabbing;
 }
 
 .modal-stage img {
@@ -586,12 +597,16 @@ h1 {
 }
 
 .modal-stage img.is-zoomed {
-  cursor: zoom-out;
+  cursor: grab;
   height: auto;
   max-height: none;
   max-width: none;
   object-fit: initial;
   width: auto;
+}
+
+.modal-stage.is-dragging img.is-zoomed {
+  cursor: grabbing;
 }
 
 .modal-stage video {
