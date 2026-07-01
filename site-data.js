@@ -8,14 +8,14 @@ window.PORTFOLIO_DATA = {
     aboutCopy:
       "I create 3D props and environment assets with attention to material storytelling, surface breakup, and presentation lighting. My work focuses on readable forms, layered wear, and assets that feel ready to live inside a game world.",
     skills: [
-      "Maya / Blender",
+      "3Ds Max / Blender",
       "ZBrush",
       "Substance 3D Painter",
+      "Photoshop",
+      "Marmoset",
       "Unreal Engine",
-      "Hard-surface modeling",
-      "Sculpting",
-      "Texturing",
-      "Environment props"
+      "Unity Engine"
+      
     ],
     contact: {
       email: "",
