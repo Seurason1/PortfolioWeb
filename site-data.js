@@ -32,6 +32,24 @@ window.PORTFOLIO_DATA = {
   },
   projects: [
     {
+      title: "Goryeo Celadon",
+      slug: "goryeo-celadon",
+      category: "Historical ceramic prop",
+      year: "2026",
+      description:
+        "A Goryeo celadon vessel study focused on crackled glaze, inlaid crane and cloud motifs, and aged ceramic surface detail.",
+      cover: "portfolio/Goryeo Celadon/Sum.png",
+      thumbnailRatio: "1065 / 1956",
+      images: [
+        "portfolio/Goryeo Celadon/1.png",
+        "portfolio/Goryeo Celadon/2.png",
+        "portfolio/Goryeo Celadon/3.png",
+        "portfolio/Goryeo Celadon/4.png",
+        "portfolio/Goryeo Celadon/5.png",
+        "portfolio/Goryeo Celadon/6.png"
+      ]
+    },
+    {
       title: "Axegun",
       slug: "axegun",
       category: "Hard-surface prop",
