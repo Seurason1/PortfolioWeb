@@ -332,34 +332,43 @@ h1 {
 }
 
 .project-grid {
-  --project-grid-gap: clamp(1rem, 2vw, 1.5rem);
-  column-count: 3;
-  column-gap: var(--project-grid-gap);
+  --project-columns: 3;
+  --project-grid-gap: clamp(0.4rem, 0.7vw, 0.7rem);
+  align-items: flex-start;
+  display: flex;
+  gap: var(--project-grid-gap);
+  width: 100%;
+}
+
+.project-column {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: var(--project-grid-gap);
+  min-width: 0;
 }
 
 .project-card {
   background: var(--bg-raised);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  break-inside: avoid;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px var(--line);
   cursor: pointer;
-  display: inline-block;
-  margin: 0 0 var(--project-grid-gap);
+  display: block;
+  margin: 0;
   min-width: 0;
   overflow: hidden;
   padding: 0;
   text-align: left;
   transition:
-    border-color 180ms ease,
-    transform 180ms ease,
     box-shadow 180ms ease;
   width: 100%;
 }
 
 .project-card:hover {
-  border-color: rgba(214, 162, 71, 0.55);
-  box-shadow: 0 22px 42px var(--shadow);
-  transform: translateY(-4px);
+  box-shadow:
+    inset 0 0 0 1px rgba(214, 162, 71, 0.64),
+    0 14px 28px var(--shadow);
 }
 
 .project-card:focus-visible {
@@ -373,20 +382,10 @@ h1 {
 }
 
 .project-cover img {
-  height: auto;
-  position: relative;
-  transition: transform 280ms ease;
-  transform: scale(var(--thumbnail-scale, 1));
-  width: 100%;
-}
-
-.project-cover-framed img {
   height: 100%;
-  object-fit: cover;
-}
-
-.project-card:hover .project-cover img {
-  transform: scale(var(--thumbnail-hover-scale, 1.08));
+  object-fit: contain;
+  position: relative;
+  width: 100%;
 }
 
 .project-title-overlay {
@@ -659,7 +658,7 @@ h1 {
   }
 
   .project-grid {
-    column-count: 2;
+    --project-columns: 2;
   }
 
   .about-layout,
@@ -720,7 +719,7 @@ h1 {
   }
 
   .project-grid {
-    column-count: 1;
+    --project-columns: 1;
   }
 
   .modal-dialog {

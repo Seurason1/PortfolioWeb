@@ -33,10 +33,8 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A hybrid weapon prop built around a strong silhouette, worn metal, aged wood, and leather material contrast.",
-      cover: "portfolio/Axegun/1.png",
-      thumbnailRatio: "16 / 9",
-      thumbnailPosition: "50% 50%",
-      thumbnailScale: 1.22,
+      cover: "portfolio/Axegun/Sum.png",
+      thumbnailRatio: "856 / 616",
       images: [
         "portfolio/Axegun/1.png",
         "portfolio/Axegun/2.png",
@@ -47,16 +45,28 @@ window.PORTFOLIO_DATA = {
       ]
     },
     {
+      title: "Stylized Axe",
+      slug: "stylized-axe",
+      category: "Stylized weapon prop",
+      year: "2026",
+      description:
+        "A stylized axe study built around a bold silhouette, carved forms, and hand-painted material definition.",
+      cover: "portfolio/Stylized Axe/Sum.png",
+      thumbnailRatio: "505 / 570",
+      images: [
+        "portfolio/Stylized Axe/1.png",
+        "portfolio/Stylized Axe/2.png"
+      ]
+    },
+    {
       title: "Chesterfield Chair",
       slug: "chesterfield-chair",
       category: "Environment prop",
       year: "2026",
       description:
         "A vintage seating asset focused on leather surface variation, soft volume, and believable wear for an interior scene.",
-      cover: "portfolio/Chesterfield chair/1.png",
-      thumbnailRatio: "4 / 5",
-      thumbnailPosition: "50% 48%",
-      thumbnailScale: 1.34,
+      cover: "portfolio/Chesterfield chair/Sum.png",
+      thumbnailRatio: "763 / 907",
       images: [
         "portfolio/Chesterfield chair/1.png",
         "portfolio/Chesterfield chair/2.png",
@@ -71,10 +81,8 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A compact mechanical tool study with layered grime, scratched metal, and small construction details.",
-      cover: "portfolio/Hand Drill/5 (1).png",
-      thumbnailRatio: "5 / 4",
-      thumbnailPosition: "58% 50%",
-      thumbnailScale: 1.28,
+      cover: "portfolio/Hand Drill/Sum.png",
+      thumbnailRatio: "1255 / 869",
       images: [
         "portfolio/Hand Drill/5 (1).png",
         "portfolio/Hand Drill/5 (2).png",
@@ -90,10 +98,8 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A rugged survival knife prop shaped by improvised construction, chipped edges, and post-apocalyptic material wear.",
-      cover: "portfolio/Post apocalypse Knife/2 (1).png",
-      thumbnailRatio: "21 / 10",
-      thumbnailPosition: "50% 50%",
-      thumbnailScale: 1.18,
+      cover: "portfolio/Post apocalypse Knife/Sum.png",
+      thumbnailRatio: "1005 / 394",
       images: [
         "portfolio/Post apocalypse Knife/2 (1).png",
         "portfolio/Post apocalypse Knife/2 (2).png",
@@ -108,10 +114,8 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A set of natural rock assets exploring sculpted forms, surface breakup, and reusable environment set dressing.",
-      cover: "portfolio/Rocks/1.png",
-      thumbnailRatio: "1 / 1",
-      thumbnailPosition: "48% 52%",
-      thumbnailScale: 1.38,
+      cover: "portfolio/Rocks/Sum.png",
+      thumbnailRatio: "817 / 771",
       images: [
         "portfolio/Rocks/1.png",
         "portfolio/Rocks/2 (1).png",
@@ -119,8 +123,8 @@ window.PORTFOLIO_DATA = {
         "portfolio/Rocks/3 (1).png",
         "portfolio/Rocks/3 (2).png",
         "portfolio/Rocks/5.png",
-        "portfolio/Rocks/6 (1).png",
-        "portfolio/Rocks/6 (2).png"
+        "portfolio/Rocks/5 (2).png",
+        "portfolio/Rocks/6.png"
       ]
     },
     {
@@ -130,13 +134,11 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A vintage object study emphasizing old plastic, metal accents, and a readable prop silhouette.",
-      cover: "portfolio/Vintage Telephone/0 (1).png",
-      thumbnailRatio: "4 / 3",
-      thumbnailPosition: "50% 50%",
-      thumbnailScale: 1.3,
+      cover: "portfolio/Vintage Telephone/Sum.png",
+      thumbnailRatio: "661 / 895",
       images: [
-        "portfolio/Vintage Telephone/0 (1).png",
-        "portfolio/Vintage Telephone/0 (2).png"
+        "portfolio/Vintage Telephone/1.png",
+        "portfolio/Vintage Telephone/2.png"
       ]
     },
     {
@@ -146,10 +148,8 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A worn wooden chair asset presented with close-up material shots, fabric detail, and atmospheric scene framing.",
-      cover: "portfolio/Wood chair/1.png",
-      thumbnailRatio: "7 / 9",
-      thumbnailPosition: "50% 45%",
-      thumbnailScale: 1.42,
+      cover: "portfolio/Wood chair/Sum.png",
+      thumbnailRatio: "811 / 663",
       images: [
         "portfolio/Wood chair/1.png",
         "portfolio/Wood chair/2.png",

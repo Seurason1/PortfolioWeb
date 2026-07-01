@@ -3,7 +3,10 @@
   const state = {
     activeProjectIndex: -1,
     activeImageIndex: 0,
-    lastFocusedElement: null
+    lastFocusedElement: null,
+    masonryColumnCount: 0,
+    projectCards: [],
+    resizeFrame: 0
   };
 
   const selectors = {
@@ -104,46 +107,111 @@
     });
   }
 
-  function renderProjects() {
-    selectors.projectGrid.innerHTML = "";
-    data.projects.forEach((project, projectIndex) => {
-      const card = createElement("button", "project-card");
-      card.type = "button";
-      card.setAttribute("aria-label", `Open ${project.title} project gallery`);
-      card.dataset.projectIndex = String(projectIndex);
+  function parseThumbnailRatio(value) {
+    const [width, height] = String(value).split("/").map(Number);
+    return width > 0 && height > 0 ? width / height : 1;
+  }
 
-      const cover = createElement("div", "project-cover");
-      if (project.thumbnailRatio) {
-        cover.classList.add("project-cover-framed");
-        cover.style.aspectRatio = project.thumbnailRatio;
-      }
-      if (project.thumbnailScale) {
-        const thumbnailScale = Number(project.thumbnailScale);
-        if (Number.isFinite(thumbnailScale)) {
-          cover.style.setProperty("--thumbnail-scale", String(thumbnailScale));
-          cover.style.setProperty("--thumbnail-hover-scale", String(thumbnailScale + 0.06));
-        }
+  function createProjectCard(project, projectIndex) {
+    const card = createElement("button", "project-card");
+    card.type = "button";
+    card.setAttribute("aria-label", `Open ${project.title} project gallery`);
+    card.dataset.projectIndex = String(projectIndex);
+    card.dataset.inverseRatio = String(1 / parseThumbnailRatio(project.thumbnailRatio));
+
+    const cover = createElement("div", "project-cover");
+    if (project.thumbnailRatio) {
+      cover.style.aspectRatio = project.thumbnailRatio;
+    }
+
+    const image = document.createElement("img");
+    image.src = project.cover;
+    image.alt = `${project.title} cover render`;
+    image.loading = "lazy";
+    cover.append(image);
+
+    const title = createElement("h3", "", project.title);
+    title.className = "project-title-overlay";
+    cover.append(title);
+    card.append(cover);
+    card.addEventListener("click", () => openProject(projectIndex, 0));
+    return card;
+  }
+
+  function getProjectColumnCount() {
+    const value = getComputedStyle(selectors.projectGrid).getPropertyValue("--project-columns");
+    return Math.max(1, Math.min(data.projects.length, Number.parseInt(value, 10) || 1));
+  }
+
+  function distributeProjectCards(columnCount) {
+    const columns = Array.from({ length: columnCount }, () => []);
+    const unitHeights = Array(columnCount).fill(0);
+
+    state.projectCards.forEach((card, index) => {
+      let targetColumn = index;
+      if (index >= columnCount) {
+        targetColumn = unitHeights.indexOf(Math.min(...unitHeights));
       }
 
-      const image = document.createElement("img");
-      image.src = project.cover;
-      image.alt = `${project.title} cover render`;
-      if (project.thumbnailPosition) {
-        image.style.objectPosition = project.thumbnailPosition;
-      }
-      image.loading = projectIndex === 0 ? "eager" : "lazy";
-      if (projectIndex === 0) {
-        image.fetchPriority = "high";
-      }
-      cover.append(image);
-
-      const title = createElement("h3", "", project.title);
-      title.className = "project-title-overlay";
-      cover.append(title);
-      card.append(cover);
-      card.addEventListener("click", () => openProject(projectIndex, 0));
-      selectors.projectGrid.append(card);
+      columns[targetColumn].push(card);
+      unitHeights[targetColumn] += Number(card.dataset.inverseRatio);
     });
+
+    return columns;
+  }
+
+  function balanceProjectColumns(columns) {
+    const gridStyle = getComputedStyle(selectors.projectGrid);
+    const gap = Number.parseFloat(gridStyle.columnGap) || 0;
+    const availableWidth = selectors.projectGrid.clientWidth - gap * (columns.length - 1);
+    const unitHeights = columns.map((column) =>
+      Array.from(column.children).reduce(
+        (total, card) => total + Number(card.dataset.inverseRatio),
+        0
+      )
+    );
+    const targetHeight =
+      (availableWidth +
+        gap *
+          columns.reduce(
+            (total, column, index) =>
+              total + (column.children.length - 1) / unitHeights[index],
+            0
+          )) /
+      unitHeights.reduce((total, unitHeight) => total + 1 / unitHeight, 0);
+
+    columns.forEach((column, index) => {
+      const columnGaps = gap * (column.children.length - 1);
+      column.style.width = `${(targetHeight - columnGaps) / unitHeights[index]}px`;
+    });
+  }
+
+  function layoutProjectGrid() {
+    const columnCount = getProjectColumnCount();
+
+    if (state.masonryColumnCount !== columnCount) {
+      selectors.projectGrid.innerHTML = "";
+      const cardGroups = distributeProjectCards(columnCount);
+      cardGroups.forEach((cards) => {
+        const column = createElement("div", "project-column");
+        cards.forEach((card) => column.append(card));
+        selectors.projectGrid.append(column);
+      });
+      state.masonryColumnCount = columnCount;
+    }
+
+    balanceProjectColumns(Array.from(selectors.projectGrid.children));
+  }
+
+  function scheduleProjectGridLayout() {
+    window.cancelAnimationFrame(state.resizeFrame);
+    state.resizeFrame = window.requestAnimationFrame(layoutProjectGrid);
+  }
+
+  function renderProjects() {
+    state.projectCards = data.projects.map(createProjectCard);
+    state.masonryColumnCount = 0;
+    layoutProjectGrid();
   }
 
   function openProject(projectIndex, imageIndex) {
@@ -326,6 +394,7 @@
 
     window.addEventListener("keydown", handleKeyboard);
     window.addEventListener("scroll", handleHeaderState, { passive: true });
+    window.addEventListener("resize", scheduleProjectGridLayout, { passive: true });
   }
 
   function init() {
