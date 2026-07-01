@@ -1,4 +1,9 @@
 window.PORTFOLIO_DATA = {
+  repository: {
+    owner: "Seurason1",
+    name: "PortfolioWeb",
+    branch: "main"
+  },
   artist: {
     name: "Sang Won Kim",
     role: "3D Game Environment & Prop Artist",
@@ -55,7 +60,8 @@ window.PORTFOLIO_DATA = {
       thumbnailRatio: "505 / 570",
       images: [
         "portfolio/Stylized Axe/1.png",
-        "portfolio/Stylized Axe/2.png"
+        "portfolio/Stylized Axe/2.png",
+        "portfolio/Stylized Axe/3.mp4"
       ]
     },
     {
@@ -138,7 +144,8 @@ window.PORTFOLIO_DATA = {
       thumbnailRatio: "661 / 895",
       images: [
         "portfolio/Vintage Telephone/1.png",
-        "portfolio/Vintage Telephone/2.png"
+        "portfolio/Vintage Telephone/2.png",
+        "portfolio/Vintage Telephone/3.mp4"
       ]
     },
     {

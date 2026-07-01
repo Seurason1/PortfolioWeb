@@ -6,7 +6,8 @@
     lastFocusedElement: null,
     masonryColumnCount: 0,
     projectCards: [],
-    resizeFrame: 0
+    resizeFrame: 0,
+    wheelTimer: 0
   };
 
   const selectors = {
@@ -26,13 +27,18 @@
     projectGrid: document.querySelector("[data-project-grid]"),
     year: document.querySelector("[data-year]"),
     modal: document.querySelector("[data-modal]"),
+    modalMedia: document.querySelector("[data-modal-media]"),
+    modalStage: document.querySelector("[data-modal-stage]"),
     modalImage: document.querySelector("[data-modal-image]"),
+    modalVideo: document.querySelector("[data-modal-video]"),
     modalCategory: document.querySelector("[data-modal-category]"),
     modalTitle: document.querySelector("[data-modal-title]"),
     modalDescription: document.querySelector("[data-modal-description]"),
     modalCount: document.querySelector("[data-modal-count]"),
     modalYear: document.querySelector("[data-modal-year]"),
-    thumbnailStrip: document.querySelector("[data-thumbnail-strip]")
+    thumbnailStrip: document.querySelector("[data-thumbnail-strip]"),
+    previousProject: document.querySelector("[data-prev]"),
+    nextProject: document.querySelector("[data-next]")
   };
 
   function setText(element, text) {
@@ -52,8 +58,12 @@
     return element;
   }
 
-  function getProjectImageAlt(project, imageIndex) {
-    return `${project.title} render ${imageIndex + 1} of ${project.images.length}`;
+  function isVideoPath(path) {
+    return /\.(mp4|webm)$/i.test(path);
+  }
+
+  function getProjectMediaAlt(project, mediaIndex) {
+    return `${project.title} render ${mediaIndex + 1} of ${project.images.length}`;
   }
 
   function renderArtist() {
@@ -105,6 +115,58 @@
       }
       selectors.contactLinks.append(link);
     });
+  }
+
+  async function syncProjectMedia() {
+    const repository = data.repository;
+    if (!repository?.owner || !repository?.name || !repository?.branch) {
+      return;
+    }
+
+    const apiUrl =
+      `https://api.github.com/repos/${repository.owner}/${repository.name}` +
+      `/git/trees/${repository.branch}?recursive=1`;
+
+    try {
+      const response = await fetch(apiUrl, {
+        cache: "no-store",
+        headers: { Accept: "application/vnd.github+json" }
+      });
+      if (!response.ok) {
+        return;
+      }
+
+      const payload = await response.json();
+      const repositoryMedia = payload.tree
+        .filter((item) => item.type === "blob" && /\.(png|jpe?g|webp|mp4|webm)$/i.test(item.path))
+        .map((item) => item.path);
+
+      data.projects.forEach((project) => {
+        const folder = project.cover.slice(0, project.cover.lastIndexOf("/") + 1);
+        const media = repositoryMedia
+          .filter((path) => {
+            const fileName = path.slice(path.lastIndexOf("/") + 1);
+            return path.startsWith(folder) && !/^sum\.(png|jpe?g|webp)$/i.test(fileName);
+          })
+          .sort((first, second) =>
+            first.localeCompare(second, undefined, { numeric: true, sensitivity: "base" })
+          );
+
+        if (media.length > 0) {
+          project.images = media;
+        }
+      });
+
+      if (selectors.modal.classList.contains("is-open")) {
+        state.activeImageIndex = Math.min(
+          state.activeImageIndex,
+          data.projects[state.activeProjectIndex].images.length - 1
+        );
+        renderModal();
+      }
+    } catch (error) {
+      // The configured media list remains available when GitHub discovery is offline.
+    }
   }
 
   function parseThumbnailRatio(value) {
@@ -234,6 +296,8 @@
     selectors.modal.classList.remove("is-open");
     selectors.modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
+    selectors.modalVideo.pause();
+    resetModalImageZoom();
 
     if (state.lastFocusedElement && typeof state.lastFocusedElement.focus === "function") {
       state.lastFocusedElement.focus();
@@ -248,14 +312,21 @@
 
     state.activeImageIndex =
       (state.activeImageIndex + direction + project.images.length) % project.images.length;
-    renderModalImage();
+    renderModalMedia();
     renderThumbnails();
   }
 
   function setImage(imageIndex) {
     state.activeImageIndex = imageIndex;
-    renderModalImage();
+    renderModalMedia();
     renderThumbnails();
+  }
+
+  function moveProject(direction) {
+    state.activeProjectIndex =
+      (state.activeProjectIndex + direction + data.projects.length) % data.projects.length;
+    state.activeImageIndex = 0;
+    renderModal();
   }
 
   function renderModal() {
@@ -268,85 +339,122 @@
     setText(selectors.modalTitle, project.title);
     setText(selectors.modalDescription, project.description);
     setText(selectors.modalYear, project.year);
-    renderModalImage();
+    renderModalMedia();
     renderThumbnails();
+    updateProjectNavigation();
   }
 
-  function renderModalImage() {
+  function renderModalMedia() {
     const project = data.projects[state.activeProjectIndex];
-    const imagePath = project.images[state.activeImageIndex];
+    const mediaPath = project.images[state.activeImageIndex];
+    const showVideo = isVideoPath(mediaPath);
 
     resetModalImageZoom();
-    selectors.modalImage.src = imagePath;
-    selectors.modalImage.alt = getProjectImageAlt(project, state.activeImageIndex);
+    selectors.modalVideo.pause();
+    selectors.modalImage.hidden = showVideo;
+    selectors.modalVideo.hidden = !showVideo;
+
+    if (showVideo) {
+      selectors.modalVideo.src = mediaPath;
+      selectors.modalVideo.load();
+      selectors.modalVideo.play().catch(() => {});
+    } else {
+      selectors.modalVideo.removeAttribute("src");
+      selectors.modalImage.src = mediaPath;
+      selectors.modalImage.alt = getProjectMediaAlt(project, state.activeImageIndex);
+    }
+
     selectors.modalCount.textContent = `${state.activeImageIndex + 1} / ${project.images.length}`;
   }
 
-  function canZoomModalImage() {
-    const image = selectors.modalImage;
-    const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    return (
-      hasFinePointer &&
-      image.complete &&
-      (image.naturalWidth > image.clientWidth || image.naturalHeight > image.clientHeight)
-    );
-  }
-
-  function updateModalImageZoomPosition(event) {
-    if (!canZoomModalImage()) {
+  function toggleModalImageZoom(event) {
+    if (selectors.modalImage.hidden || !selectors.modalImage.complete) {
       return;
     }
 
     const rect = selectors.modalImage.getBoundingClientRect();
-    const x = Math.min(Math.max(((event.clientX - rect.left) / rect.width) * 100, 0), 100);
-    const y = Math.min(Math.max(((event.clientY - rect.top) / rect.height) * 100, 0), 100);
-
-    selectors.modalImage.style.objectPosition = `${x}% ${y}%`;
-  }
-
-  function handleModalImageZoomStart(event) {
-    if (!canZoomModalImage()) {
+    const isZoomed = selectors.modalImage.classList.contains("is-zoomed");
+    if (isZoomed) {
+      resetModalImageZoom();
       return;
     }
 
+    const focusX = (event.clientX - rect.left) / rect.width;
+    const focusY = (event.clientY - rect.top) / rect.height;
+    selectors.modalStage.classList.add("is-zoomed");
     selectors.modalImage.classList.add("is-zoomed");
-    updateModalImageZoomPosition(event);
-  }
-
-  function handleModalImageZoomMove(event) {
-    if (!selectors.modalImage.classList.contains("is-zoomed")) {
-      handleModalImageZoomStart(event);
-      return;
-    }
-
-    updateModalImageZoomPosition(event);
+    window.requestAnimationFrame(() => {
+      selectors.modalStage.scrollLeft = Math.max(
+        0,
+        selectors.modalImage.offsetWidth * focusX - selectors.modalStage.clientWidth / 2
+      );
+      selectors.modalStage.scrollTop = Math.max(
+        0,
+        selectors.modalImage.offsetHeight * focusY - selectors.modalStage.clientHeight / 2
+      );
+    });
   }
 
   function resetModalImageZoom() {
+    selectors.modalStage.classList.remove("is-zoomed");
     selectors.modalImage.classList.remove("is-zoomed");
-    selectors.modalImage.style.objectPosition = "";
+    selectors.modalStage.scrollLeft = 0;
+    selectors.modalStage.scrollTop = 0;
+  }
+
+  function updateProjectNavigation() {
+    const previousIndex =
+      (state.activeProjectIndex - 1 + data.projects.length) % data.projects.length;
+    const nextIndex = (state.activeProjectIndex + 1) % data.projects.length;
+    const previousLabel = `Previous project: ${data.projects[previousIndex].title}`;
+    const nextLabel = `Next project: ${data.projects[nextIndex].title}`;
+
+    selectors.previousProject.setAttribute("aria-label", previousLabel);
+    selectors.previousProject.title = previousLabel;
+    selectors.nextProject.setAttribute("aria-label", nextLabel);
+    selectors.nextProject.title = nextLabel;
+  }
+
+  function handleModalWheel(event) {
+    if (selectors.modalImage.classList.contains("is-zoomed") || Math.abs(event.deltaY) < 4) {
+      return;
+    }
+
+    event.preventDefault();
+    if (state.wheelTimer) {
+      return;
+    }
+
+    moveImage(event.deltaY > 0 ? 1 : -1);
+    state.wheelTimer = window.setTimeout(() => {
+      state.wheelTimer = 0;
+    }, 420);
   }
 
   function renderThumbnails() {
     const project = data.projects[state.activeProjectIndex];
     selectors.thumbnailStrip.innerHTML = "";
 
-    project.images.forEach((imagePath, imageIndex) => {
+    project.images.forEach((mediaPath, mediaIndex) => {
       const button = createElement("button", "thumbnail-button");
       button.type = "button";
-      button.setAttribute("aria-label", `Show image ${imageIndex + 1}`);
-      if (imageIndex === state.activeImageIndex) {
+      button.setAttribute("aria-label", `Show media ${mediaIndex + 1}`);
+      if (mediaIndex === state.activeImageIndex) {
         button.classList.add("is-active");
         button.setAttribute("aria-current", "true");
       }
 
       const image = document.createElement("img");
-      image.src = imagePath;
+      image.src = isVideoPath(mediaPath) ? project.cover : mediaPath;
       image.alt = "";
       image.loading = "lazy";
       button.append(image);
-      button.addEventListener("click", () => setImage(imageIndex));
+      if (isVideoPath(mediaPath)) {
+        const badge = createElement("span", "thumbnail-video-badge");
+        badge.setAttribute("aria-hidden", "true");
+        button.append(badge);
+      }
+      button.addEventListener("click", () => setImage(mediaIndex));
       selectors.thumbnailStrip.append(button);
     });
   }
@@ -363,10 +471,18 @@
     }
 
     if (event.key === "ArrowLeft") {
-      moveImage(-1);
+      moveProject(-1);
     }
 
     if (event.key === "ArrowRight") {
+      moveProject(1);
+    }
+
+    if (event.key === "ArrowUp") {
+      moveImage(-1);
+    }
+
+    if (event.key === "ArrowDown") {
       moveImage(1);
     }
   }
@@ -380,17 +496,10 @@
       button.addEventListener("click", closeProject);
     });
 
-    const previousButton = selectors.modal.querySelector("[data-prev]");
-    const nextButton = selectors.modal.querySelector("[data-next]");
-    previousButton.addEventListener("click", () => moveImage(-1));
-    nextButton.addEventListener("click", () => moveImage(1));
-    selectors.modalImage.addEventListener("pointerenter", handleModalImageZoomStart);
-    selectors.modalImage.addEventListener("pointermove", handleModalImageZoomMove);
-    selectors.modalImage.addEventListener("pointerleave", resetModalImageZoom);
-    selectors.modalImage.addEventListener("mouseenter", handleModalImageZoomStart);
-    selectors.modalImage.addEventListener("mousemove", handleModalImageZoomMove);
-    selectors.modalImage.addEventListener("mouseleave", resetModalImageZoom);
-    selectors.modalImage.addEventListener("load", resetModalImageZoom);
+    selectors.previousProject.addEventListener("click", () => moveProject(-1));
+    selectors.nextProject.addEventListener("click", () => moveProject(1));
+    selectors.modalImage.addEventListener("click", toggleModalImageZoom);
+    selectors.modalMedia.addEventListener("wheel", handleModalWheel, { passive: false });
 
     window.addEventListener("keydown", handleKeyboard);
     window.addEventListener("scroll", handleHeaderState, { passive: true });
@@ -407,6 +516,7 @@
     renderProjects();
     bindEvents();
     handleHeaderState();
+    syncProjectMedia();
   }
 
   init();
