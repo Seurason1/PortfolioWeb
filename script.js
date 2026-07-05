@@ -34,6 +34,7 @@
     contactNav: document.querySelector("[data-contact-nav]"),
     projectGrid: document.querySelector("[data-project-grid]"),
     year: document.querySelector("[data-year]"),
+    backToTop: document.querySelector("[data-back-to-top]"),
     modal: document.querySelector("[data-modal]"),
     modalMedia: document.querySelector("[data-modal-media]"),
     modalStage: document.querySelector("[data-modal-stage]"),
@@ -574,6 +575,12 @@
 
   function handleHeaderState() {
     selectors.header.classList.toggle("is-scrolled", window.scrollY > 12);
+    selectors.backToTop.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.5);
+  }
+
+  function scrollToTop() {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
   }
 
   function bindEvents() {
@@ -590,6 +597,7 @@
     selectors.modalStage.addEventListener("pointerup", handleImageDragEnd);
     selectors.modalStage.addEventListener("pointercancel", handleImageDragEnd);
     selectors.modalMedia.addEventListener("wheel", handleModalWheel, { passive: false });
+    selectors.backToTop.addEventListener("click", scrollToTop);
 
     window.addEventListener("keydown", handleKeyboard);
     window.addEventListener("scroll", handleHeaderState, { passive: true });

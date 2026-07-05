@@ -119,6 +119,12 @@
       <p>&copy; <span data-year></span> <span data-footer-name>Sang Won Kim</span>. All images and artwork reserved.</p>
     </footer>
 
+    <button class="back-to-top" type="button" data-back-to-top aria-label="Back to top" title="Back to top">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 19V5M6 11l6-6 6 6"></path>
+      </svg>
+    </button>
+
     <div class="modal" data-modal aria-hidden="true">
       <div class="modal-backdrop" data-modal-close></div>
       <article
@@ -145,18 +151,23 @@
             &#9654;
           </button>
         </div>
-        <div class="modal-info">
-          <div>
-            <p class="eyebrow" data-modal-category></p>
-            <h2 id="modal-title" data-modal-title></h2>
-            <p id="modal-description" data-modal-description></p>
+        <aside class="modal-sidebar">
+          <div class="modal-info">
+            <div>
+              <p class="eyebrow" data-modal-category></p>
+              <h2 id="modal-title" data-modal-title></h2>
+              <p id="modal-description" data-modal-description></p>
+            </div>
+            <div class="modal-meta">
+              <span data-modal-count></span>
+              <span data-modal-year></span>
+            </div>
           </div>
-          <div class="modal-meta">
-            <span data-modal-count></span>
-            <span data-modal-year></span>
+          <div class="modal-previews">
+            <p class="eyebrow modal-preview-title">Preview</p>
+            <div class="thumbnail-strip" data-thumbnail-strip aria-label="Project images"></div>
           </div>
-        </div>
-        <div class="thumbnail-strip" data-thumbnail-strip aria-label="Project images"></div>
+        </aside>
       </article>
     </div>
   </body>
