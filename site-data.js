@@ -1,4 +1,9 @@
 window.PORTFOLIO_DATA = {
+  repository: {
+    owner: "Seurason1",
+    name: "PortfolioWeb",
+    branch: "main"
+  },
   artist: {
     name: "Sang Won Kim",
     role: "3D Game Environment & Prop Artist",
@@ -33,15 +38,15 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A Goryeo celadon vessel study focused on crackled glaze, inlaid crane and cloud motifs, and aged ceramic surface detail.",
-      cover: "assets/optimized/covers/goryeo-celadon.webp",
+      cover: "portfolio/Goryeo Celadon/Sum.png",
       thumbnailRatio: "1065 / 1956",
       images: [
-        "assets/optimized/details/goryeo-celadon-01.webp",
-        "assets/optimized/details/goryeo-celadon-02.webp",
-        "assets/optimized/details/goryeo-celadon-03.webp",
-        "assets/optimized/details/goryeo-celadon-04.webp",
-        "assets/optimized/details/goryeo-celadon-05.webp",
-        "assets/optimized/details/goryeo-celadon-06.webp"
+        "portfolio/Goryeo Celadon/1.png",
+        "portfolio/Goryeo Celadon/2.png",
+        "portfolio/Goryeo Celadon/3.png",
+        "portfolio/Goryeo Celadon/4.png",
+        "portfolio/Goryeo Celadon/5.png",
+        "portfolio/Goryeo Celadon/6.png"
       ]
     },
     {
@@ -51,15 +56,15 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A hybrid weapon prop built around a strong silhouette, worn metal, aged wood, and leather material contrast.",
-      cover: "assets/optimized/covers/axegun.webp",
+      cover: "portfolio/Axegun/Sum.png",
       thumbnailRatio: "856 / 616",
       images: [
-        "assets/optimized/details/axegun-01.webp",
-        "assets/optimized/details/axegun-02.webp",
-        "assets/optimized/details/axegun-03.webp",
-        "assets/optimized/details/axegun-04.webp",
-        "assets/optimized/details/axegun-05.webp",
-        "assets/optimized/details/axegun-06.webp"
+        "portfolio/Axegun/1.png",
+        "portfolio/Axegun/2.png",
+        "portfolio/Axegun/3.png",
+        "portfolio/Axegun/4.png",
+        "portfolio/Axegun/5.png",
+        "portfolio/Axegun/6.png"
       ]
     },
     {
@@ -69,12 +74,12 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A stylized axe study built around a bold silhouette, carved forms, and hand-painted material definition.",
-      cover: "assets/optimized/covers/stylized-axe.webp",
+      cover: "portfolio/Stylized Axe/Sum.png",
       thumbnailRatio: "505 / 570",
       images: [
-        "assets/optimized/details/stylized-axe-01.webp",
-        "assets/optimized/details/stylized-axe-02.webp",
-        "assets/optimized/videos/stylized-axe.mp4"
+        "portfolio/Stylized Axe/1.png",
+        "portfolio/Stylized Axe/2.png",
+        "portfolio/Stylized Axe/3.mp4"
       ]
     },
     {
@@ -84,13 +89,13 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A vintage seating asset focused on leather surface variation, soft volume, and believable wear for an interior scene.",
-      cover: "assets/optimized/covers/chesterfield-chair.webp",
+      cover: "portfolio/Chesterfield chair/Sum.png",
       thumbnailRatio: "763 / 907",
       images: [
-        "assets/optimized/details/chesterfield-chair-01.webp",
-        "assets/optimized/details/chesterfield-chair-02.webp",
-        "assets/optimized/details/chesterfield-chair-03.webp",
-        "assets/optimized/details/chesterfield-chair-04.webp"
+        "portfolio/Chesterfield chair/1.png",
+        "portfolio/Chesterfield chair/2.png",
+        "portfolio/Chesterfield chair/3.png",
+        "portfolio/Chesterfield chair/4.png"
       ]
     },
     {
@@ -100,14 +105,14 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A compact mechanical tool study with layered grime, scratched metal, and small construction details.",
-      cover: "assets/optimized/covers/hand-drill.webp",
+      cover: "portfolio/Hand Drill/Sum.png",
       thumbnailRatio: "1255 / 869",
       images: [
-        "assets/optimized/details/hand-drill-01.webp",
-        "assets/optimized/details/hand-drill-02.webp",
-        "assets/optimized/details/hand-drill-03.webp",
-        "assets/optimized/details/hand-drill-04.webp",
-        "assets/optimized/details/hand-drill-05.webp"
+        "portfolio/Hand Drill/5 (1).png",
+        "portfolio/Hand Drill/5 (2).png",
+        "portfolio/Hand Drill/5 (3).png",
+        "portfolio/Hand Drill/5 (4).png",
+        "portfolio/Hand Drill/5 (5).png"
       ]
     },
     {
@@ -117,13 +122,13 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A rugged survival knife prop shaped by improvised construction, chipped edges, and post-apocalyptic material wear.",
-      cover: "assets/optimized/covers/post-apocalypse-knife.webp",
+      cover: "portfolio/Post apocalypse Knife/Sum.png",
       thumbnailRatio: "1005 / 394",
       images: [
-        "assets/optimized/details/post-apocalypse-knife-01.webp",
-        "assets/optimized/details/post-apocalypse-knife-02.webp",
-        "assets/optimized/details/post-apocalypse-knife-03.webp",
-        "assets/optimized/details/post-apocalypse-knife-04.webp"
+        "portfolio/Post apocalypse Knife/2 (1).png",
+        "portfolio/Post apocalypse Knife/2 (2).png",
+        "portfolio/Post apocalypse Knife/2 (3).png",
+        "portfolio/Post apocalypse Knife/2 (4).png"
       ]
     },
     {
@@ -133,17 +138,17 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A set of natural rock assets exploring sculpted forms, surface breakup, and reusable environment set dressing.",
-      cover: "assets/optimized/covers/rocks.webp",
+      cover: "portfolio/Rocks/Sum.png",
       thumbnailRatio: "817 / 771",
       images: [
-        "assets/optimized/details/rocks-01.webp",
-        "assets/optimized/details/rocks-02.webp",
-        "assets/optimized/details/rocks-03.webp",
-        "assets/optimized/details/rocks-04.webp",
-        "assets/optimized/details/rocks-05.webp",
-        "assets/optimized/details/rocks-06.webp",
-        "assets/optimized/details/rocks-07.webp",
-        "assets/optimized/details/rocks-08.webp"
+        "portfolio/Rocks/1.png",
+        "portfolio/Rocks/2 (1).png",
+        "portfolio/Rocks/2 (2).png",
+        "portfolio/Rocks/3 (1).png",
+        "portfolio/Rocks/3 (2).png",
+        "portfolio/Rocks/5.png",
+        "portfolio/Rocks/5 (2).png",
+        "portfolio/Rocks/6.png"
       ]
     },
     {
@@ -153,12 +158,12 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A vintage object study emphasizing old plastic, metal accents, and a readable prop silhouette.",
-      cover: "assets/optimized/covers/vintage-telephone.webp",
+      cover: "portfolio/Vintage Telephone/Sum.png",
       thumbnailRatio: "661 / 895",
       images: [
-        "assets/optimized/details/vintage-telephone-01.webp",
-        "assets/optimized/details/vintage-telephone-02.webp",
-        "assets/optimized/videos/showreel-1080.mp4"
+        "portfolio/Vintage Telephone/1.png",
+        "portfolio/Vintage Telephone/2.png",
+        "portfolio/Vintage Telephone/3.mp4"
       ]
     },
     {
@@ -168,15 +173,15 @@ window.PORTFOLIO_DATA = {
       year: "2026",
       description:
         "A worn wooden chair asset presented with close-up material shots, fabric detail, and atmospheric scene framing.",
-      cover: "assets/optimized/covers/wood-chair.webp",
+      cover: "portfolio/Wood chair/Sum.png",
       thumbnailRatio: "811 / 663",
       images: [
-        "assets/optimized/details/wood-chair-01.webp",
-        "assets/optimized/details/wood-chair-02.webp",
-        "assets/optimized/details/wood-chair-03.webp",
-        "assets/optimized/details/wood-chair-04.webp",
-        "assets/optimized/details/wood-chair-05.webp",
-        "assets/optimized/details/wood-chair-06.webp"
+        "portfolio/Wood chair/1.png",
+        "portfolio/Wood chair/2.png",
+        "portfolio/Wood chair/3.png",
+        "portfolio/Wood chair/4.png",
+        "portfolio/Wood chair/5.png",
+        "portfolio/Wood chair/6.png"
       ]
     }
   ]
