@@ -126,58 +126,6 @@
     });
   }
 
-  async function syncProjectMedia() {
-    const repository = data.repository;
-    if (!repository?.owner || !repository?.name || !repository?.branch) {
-      return;
-    }
-
-    const apiUrl =
-      `https://api.github.com/repos/${repository.owner}/${repository.name}` +
-      `/git/trees/${repository.branch}?recursive=1`;
-
-    try {
-      const response = await fetch(apiUrl, {
-        cache: "no-store",
-        headers: { Accept: "application/vnd.github+json" }
-      });
-      if (!response.ok) {
-        return;
-      }
-
-      const payload = await response.json();
-      const repositoryMedia = payload.tree
-        .filter((item) => item.type === "blob" && /\.(png|jpe?g|webp|mp4|webm)$/i.test(item.path))
-        .map((item) => item.path);
-
-      data.projects.forEach((project) => {
-        const folder = project.cover.slice(0, project.cover.lastIndexOf("/") + 1);
-        const media = repositoryMedia
-          .filter((path) => {
-            const fileName = path.slice(path.lastIndexOf("/") + 1);
-            return path.startsWith(folder) && !/^sum\.(png|jpe?g|webp)$/i.test(fileName);
-          })
-          .sort((first, second) =>
-            first.localeCompare(second, undefined, { numeric: true, sensitivity: "base" })
-          );
-
-        if (media.length > 0) {
-          project.images = media;
-        }
-      });
-
-      if (selectors.modal.classList.contains("is-open")) {
-        state.activeImageIndex = Math.min(
-          state.activeImageIndex,
-          data.projects[state.activeProjectIndex].images.length - 1
-        );
-        renderModal();
-      }
-    } catch (error) {
-      // The configured media list remains available when GitHub discovery is offline.
-    }
-  }
-
   function parseThumbnailRatio(value) {
     const [width, height] = String(value).split("/").map(Number);
     return width > 0 && height > 0 ? width / height : 1;
@@ -199,6 +147,7 @@
     image.src = project.cover;
     image.alt = `${project.title} cover render`;
     image.loading = "lazy";
+    image.decoding = "async";
     cover.append(image);
 
     const title = createElement("h3", "", project.title);
@@ -531,9 +480,12 @@
       }
 
       const image = document.createElement("img");
-      image.src = isVideoPath(mediaPath) ? project.cover : mediaPath;
+      image.src = isVideoPath(mediaPath)
+        ? project.cover
+        : mediaPath.replace("/details/", "/previews/");
       image.alt = "";
       image.loading = "lazy";
+      image.decoding = "async";
       button.append(image);
       if (isVideoPath(mediaPath)) {
         const badge = createElement("span", "thumbnail-video-badge");
@@ -614,7 +566,6 @@
     renderProjects();
     bindEvents();
     handleHeaderState();
-    syncProjectMedia();
   }
 
   init();
