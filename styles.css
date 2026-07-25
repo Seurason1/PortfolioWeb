@@ -331,6 +331,10 @@ h1 {
   margin: 0;
 }
 
+.about-copy p[data-about-copy] {
+  white-space: pre-line;
+}
+
 .project-grid {
   --project-columns: 3;
   --project-grid-gap: clamp(0.4rem, 0.7vw, 0.7rem);

@@ -9,7 +9,7 @@ window.PORTFOLIO_DATA = {
     role: "3D Game Environment & Prop Artist",
     aboutTitle: "3D Artist focused on believable game assets",
     aboutCopy:
-      "I create 3D props and environment assets with attention to material storytelling, surface breakup, and presentation lighting. My work focuses on readable forms, layered wear, and assets that feel ready to live inside a game world.",
+      "학력: 한양대학교 에리카 캠퍼스 일본학과 졸업 2026\n이메일: k0108419@naver.com",
     skills: [
       "3Ds Max / Blender",
       "ZBrush",
