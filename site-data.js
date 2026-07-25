@@ -7,8 +7,6 @@ window.PORTFOLIO_DATA = {
   artist: {
     name: "Sang Won Kim",
     role: "3D Game Environment & Prop Artist",
-    heroCopy:
-      "I build grounded 3D assets with readable silhouettes, tactile surface wear, and cinematic presentation for game worlds.",
     aboutTitle: "3D Artist focused on believable game assets",
     aboutCopy:
       "I create 3D props and environment assets with attention to material storytelling, surface breakup, and presentation lighting. My work focuses on readable forms, layered wear, and assets that feel ready to live inside a game world.",
