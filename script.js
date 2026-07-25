@@ -201,9 +201,15 @@
     image.loading = "lazy";
     cover.append(image);
 
-    const title = createElement("h3", "", project.title);
-    title.className = "project-title-overlay";
-    cover.append(title);
+    const overlay = createElement("div", "project-title-overlay");
+    const title = createElement("h3", "project-title", project.title);
+    const productionPeriodText = project.productionPeriod || project.year;
+
+    overlay.append(title);
+    if (productionPeriodText) {
+      overlay.append(createElement("span", "project-production-period", productionPeriodText));
+    }
+    cover.append(overlay);
     card.append(cover);
     card.addEventListener("click", () => openProject(projectIndex, 0));
     return card;

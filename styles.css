@@ -397,11 +397,10 @@ h1 {
   background: rgba(12, 11, 9, 0.58);
   color: var(--ink);
   display: flex;
-  font-size: clamp(1.25rem, 3.2vw, 3rem);
-  font-weight: 900;
+  flex-direction: column;
+  gap: 0.55rem;
   inset: 0;
   justify-content: center;
-  line-height: 1;
   margin: 0;
   opacity: 0;
   overflow-wrap: anywhere;
@@ -411,6 +410,21 @@ h1 {
   text-shadow: 0 3px 18px rgba(0, 0, 0, 0.8);
   transition: opacity 180ms ease;
   z-index: 1;
+}
+
+.project-title-overlay h3 {
+  font-size: clamp(1.25rem, 3.2vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+}
+
+.project-production-period {
+  color: rgba(242, 234, 220, 0.76);
+  font-size: clamp(0.78rem, 1.25vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
 }
 
 .project-card:hover .project-title-overlay,

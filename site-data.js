@@ -34,6 +34,7 @@ window.PORTFOLIO_DATA = {
       slug: "goryeo-celadon",
       category: "Historical ceramic prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A Goryeo celadon vessel study focused on crackled glaze, inlaid crane and cloud motifs, and aged ceramic surface detail.",
       cover: "portfolio/Goryeo Celadon/Sum.png",
@@ -52,6 +53,7 @@ window.PORTFOLIO_DATA = {
       slug: "axegun",
       category: "Hard-surface prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A hybrid weapon prop built around a strong silhouette, worn metal, aged wood, and leather material contrast.",
       cover: "portfolio/Axegun/Sum.png",
@@ -70,6 +72,7 @@ window.PORTFOLIO_DATA = {
       slug: "stylized-axe",
       category: "Stylized weapon prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A stylized axe study built around a bold silhouette, carved forms, and hand-painted material definition.",
       cover: "portfolio/Stylized Axe/Sum.png",
@@ -85,6 +88,7 @@ window.PORTFOLIO_DATA = {
       slug: "chesterfield-chair",
       category: "Environment prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A vintage seating asset focused on leather surface variation, soft volume, and believable wear for an interior scene.",
       cover: "portfolio/Chesterfield chair/Sum.png",
@@ -101,6 +105,7 @@ window.PORTFOLIO_DATA = {
       slug: "hand-drill",
       category: "Mechanical prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A compact mechanical tool study with layered grime, scratched metal, and small construction details.",
       cover: "portfolio/Hand Drill/Sum.png",
@@ -118,6 +123,7 @@ window.PORTFOLIO_DATA = {
       slug: "post-apocalypse-knife",
       category: "Weapon prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A rugged survival knife prop shaped by improvised construction, chipped edges, and post-apocalyptic material wear.",
       cover: "portfolio/Post apocalypse Knife/Sum.png",
@@ -134,6 +140,7 @@ window.PORTFOLIO_DATA = {
       slug: "rocks",
       category: "Natural environment assets",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A set of natural rock assets exploring sculpted forms, surface breakup, and reusable environment set dressing.",
       cover: "portfolio/Rocks/Sum.png",
@@ -154,6 +161,7 @@ window.PORTFOLIO_DATA = {
       slug: "vintage-telephone",
       category: "Prop study",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A vintage object study emphasizing old plastic, metal accents, and a readable prop silhouette.",
       cover: "portfolio/Vintage Telephone/Sum.png",
@@ -169,6 +177,7 @@ window.PORTFOLIO_DATA = {
       slug: "wood-chair",
       category: "Scene prop",
       year: "2026",
+      productionPeriod: "2026",
       description:
         "A worn wooden chair asset presented with close-up material shots, fabric detail, and atmospheric scene framing.",
       cover: "portfolio/Wood chair/Sum.png",
