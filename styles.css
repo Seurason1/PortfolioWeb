@@ -447,8 +447,7 @@ h1 {
 }
 
 .skill-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 0.65rem;
   margin-top: 0.35rem;
 }
@@ -458,7 +457,9 @@ h1 {
   color: var(--ink);
   font-size: 0.82rem;
   font-weight: 800;
+  line-height: 1.5;
   padding: 0.55rem 0.72rem;
+  width: fit-content;
 }
 
 .contact-layout {
