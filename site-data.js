@@ -11,8 +11,14 @@ window.PORTFOLIO_DATA = {
     aboutCopy:
       "I create 3D props and environment assets with attention to material storytelling, surface breakup, and presentation lighting. My work focuses on readable forms, layered wear, and assets that feel ready to live inside a game world.",
     skills: [
-      "학력: 한양대학교 에리카 캠퍼스 일본학과 졸업 2026",
-      "이메일: k0108419@naver.com"
+      "3Ds Max / Blender",
+      "ZBrush",
+      "Substance 3D Painter",
+      "Photoshop",
+      "Marmoset",
+      "Unreal Engine",
+      "Unity Engine"
+      
     ],
     contact: {
       email: "",
