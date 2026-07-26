@@ -12,7 +12,7 @@ window.PORTFOLIO_DATA = {
     aboutRole: "3D 배경 모델러",
     aboutRoleMeta: "3D Game Environment & Prop Artist",
     education: {
-      display: "한양대학교에리카캠퍼스일본학과졸업(2026)",
+      display: "한양대학교 에리카 캠퍼스 일본학과 졸업(2026)",
       school: "한양대학교 에리카 캠퍼스",
       detail: "일본학과 졸업",
       period: "(2026)"
@@ -41,10 +41,10 @@ window.PORTFOLIO_DATA = {
       title: "Goryeo Celadon",
       slug: "goryeo-celadon",
       category: "Historical ceramic prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2026.05",
+      productionPeriod: "2026.05",
       description:
-        "A Goryeo celadon vessel study focused on crackled glaze, inlaid crane and cloud motifs, and aged ceramic surface detail.",
+        "박물관에서 보고 감명받은 고려청자를 모티브로 텍스쳐링에 집중하여 만들었습니다. 기본형은 실제 레퍼런스보다 약간의 더러움을 추가하였고, AI를 이용해 만든 운학문 무늬 마스크맵을 사용하여 운학문 청자병을 만들었습니다.",
       cover: "portfolio/Goryeo Celadon/Sum.png",
       thumbnailRatio: "1065 / 1956",
       images: [
@@ -60,10 +60,10 @@ window.PORTFOLIO_DATA = {
       title: "Axegun",
       slug: "axegun",
       category: "Hard-surface prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2026.4",
+      productionPeriod: "2026.4",
       description:
-        "A hybrid weapon prop built around a strong silhouette, worn metal, aged wood, and leather material contrast.",
+        "양식화된 스타일의 원화를 이용해 실사에 가까운 텍스쳐의 도끼가 붙어있는 머스켓을 만들었습니다. 형태 자체가 양식화 되어있는 것을 고려해 텍스쳐링도 실사에 가깝되, 약간의 과장된 표현을 덧붙였습니다.",
       cover: "portfolio/Axegun/Sum.png",
       thumbnailRatio: "856 / 616",
       images: [
@@ -79,10 +79,10 @@ window.PORTFOLIO_DATA = {
       title: "Stylized Axe",
       slug: "stylized-axe",
       category: "Stylized weapon prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2026.06",
+      productionPeriod: "2026.06",
       description:
-        "A stylized axe study built around a bold silhouette, carved forms, and hand-painted material definition.",
+        "스타일라이즈 형식의 도끼입니다. UV는 반맵으로 전개하였으며, 마모셋으로 렌더링 하였습니다.",
       cover: "portfolio/Stylized Axe/Sum.png",
       thumbnailRatio: "505 / 570",
       images: [
@@ -95,10 +95,10 @@ window.PORTFOLIO_DATA = {
       title: "Chesterfield Chair",
       slug: "chesterfield-chair",
       category: "Environment prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2026.02",
+      productionPeriod: "2026.02",
       description:
-        "A vintage seating asset focused on leather surface variation, soft volume, and believable wear for an interior scene.",
+        "오래되어 낡고 해진 가죽 소파를 만들었습니다. 맥스로 기본 형태를 잡고 지브러시로 주름을 추가한 뒤 서브스턴스 페인터로 텍스쳐를 완성하였습니다.",
       cover: "portfolio/Chesterfield chair/Sum.png",
       thumbnailRatio: "763 / 907",
       images: [
@@ -112,10 +112,10 @@ window.PORTFOLIO_DATA = {
       title: "Hand Drill",
       slug: "hand-drill",
       category: "Mechanical prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2026.01",
+      productionPeriod: "2026.01",
       description:
-        "A compact mechanical tool study with layered grime, scratched metal, and small construction details.",
+        "오래되어 페인트가 벗겨진 핸드드릴입니다. 페인트, 금속, 나무 텍스쳐링의 연습에 집중하여 만들었습니다",
       cover: "portfolio/Hand Drill/Sum.png",
       thumbnailRatio: "1255 / 869",
       images: [
@@ -130,10 +130,10 @@ window.PORTFOLIO_DATA = {
       title: "Post Apocalypse Knife",
       slug: "post-apocalypse-knife",
       category: "Weapon prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2025.11",
+      productionPeriod: "2025.11",
       description:
-        "A rugged survival knife prop shaped by improvised construction, chipped edges, and post-apocalyptic material wear.",
+        "포스트 아포칼립스 세계관에서 쓰일법한 칼을 만들었습니다. 맥스로 각 파트의 모델링을 마친 뒤, 지브러시로 용접 부분을 표현하였습니다. 렌더링은 마모셋으로 마무리 했습니다. ",
       cover: "portfolio/Post apocalypse Knife/Sum.png",
       thumbnailRatio: "1005 / 394",
       images: [
@@ -147,10 +147,10 @@ window.PORTFOLIO_DATA = {
       title: "Rocks",
       slug: "rocks",
       category: "Natural environment assets",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2025-2026",
+      productionPeriod: "2025-2026",
       description:
-        "A set of natural rock assets exploring sculpted forms, surface breakup, and reusable environment set dressing.",
+        "지금까지 연습한 다양한 돌 재질입니다. 기본적으로 지브러시로 모델링을 한 후, 포토샵과 크날드를 이용한 텍스쳐링, 서브스턴스 페인터를 이용한 텍스쳐링을 사용했습니다.",
       cover: "portfolio/Rocks/Sum.png",
       thumbnailRatio: "817 / 771",
       images: [
@@ -168,10 +168,10 @@ window.PORTFOLIO_DATA = {
       title: "Vintage Telephone",
       slug: "vintage-telephone",
       category: "Prop study",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2025.09",
+      productionPeriod: "2025.09",
       description:
-        "A vintage object study emphasizing old plastic, metal accents, and a readable prop silhouette.",
+        "1800년-1900년대 영국의 탐정이 쓸 것 같은 빈티지한 전화기를 만들었습니다. 렌더링은 언리얼에서 마무리 했습니다.",
       cover: "portfolio/Vintage Telephone/Sum.png",
       thumbnailRatio: "661 / 895",
       images: [
@@ -184,10 +184,10 @@ window.PORTFOLIO_DATA = {
       title: "Wood Chair",
       slug: "wood-chair",
       category: "Scene prop",
-      year: "2026",
-      productionPeriod: "2026",
+      year: "2025.11",
+      productionPeriod: "2025.11",
       description:
-        "A worn wooden chair asset presented with close-up material shots, fabric detail, and atmospheric scene framing.",
+        "낡은 목제 의자를 만들었습니다. 나무 표현 텍스쳐링 연습에 초점을 맞추어 제작하였습니다. 천 모델링은 마블러스 디자이너를 이용해 간단히 제작하였고, 언리얼 엔진으로 렌더링을 했습니다.",
       cover: "portfolio/Wood chair/Sum.png",
       thumbnailRatio: "811 / 663",
       images: [
