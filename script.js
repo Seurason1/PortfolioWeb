@@ -26,7 +26,6 @@
     heroTitle: document.querySelector("[data-hero-title]"),
     heroRole: document.querySelector("[data-hero-role]"),
     heroCopy: document.querySelector("[data-hero-copy]"),
-    aboutTitle: document.querySelector("[data-about-title]"),
     aboutProfile: document.querySelector("[data-about-profile]"),
     contactLinks: document.querySelector("[data-contact-links]"),
     contactSection: document.querySelector("[data-contact-section]"),
@@ -97,10 +96,16 @@
 
     selectors.aboutProfile.innerHTML = "";
 
-    const nameSection = createAboutProfileSection(artist.name, "Name");
+    const nameSection = createAboutProfileSection(
+      artist.aboutName || artist.name,
+      artist.aboutNameMeta || artist.name
+    );
     selectors.aboutProfile.append(nameSection);
 
-    const roleSection = createAboutProfileSection(artist.role, "Role");
+    const roleSection = createAboutProfileSection(
+      artist.aboutRole || artist.role,
+      artist.aboutRoleMeta || artist.role
+    );
     selectors.aboutProfile.append(roleSection);
 
     const toolsSection = createAboutProfileSection("사용 프로그램", "Tools");
@@ -140,7 +145,6 @@
     setText(selectors.heroTitle, artist.name);
     setText(selectors.heroRole, artist.role);
     setText(selectors.heroCopy, artist.heroCopy);
-    setText(selectors.aboutTitle, artist.aboutTitle);
     setText(selectors.year, String(new Date().getFullYear()));
     renderAboutProfile(artist);
 

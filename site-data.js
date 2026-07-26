@@ -7,7 +7,10 @@ window.PORTFOLIO_DATA = {
   artist: {
     name: "Sang Won Kim",
     role: "3D Game Environment & Prop Artist",
-    aboutTitle: "3D Artist focused on believable game assets",
+    aboutName: "김상원",
+    aboutNameMeta: "SangWon Kim",
+    aboutRole: "3D 배경 모델러",
+    aboutRoleMeta: "3D Game Environment & Prop Artist",
     education: {
       school: "한양대학교 에리카 캠퍼스",
       detail: "일본학과 졸업",
