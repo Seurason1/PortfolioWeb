@@ -119,10 +119,16 @@
       const educationItem = createElement("div", "about-profile-timeline-item");
       const educationTitle = createElement("p", "about-profile-timeline-title");
 
-      educationTitle.append(createElement("span", "about-profile-school", education.school));
-      educationTitle.append(createElement("span", "about-profile-period", education.period));
+      if (education.display) {
+        educationTitle.append(createElement("span", "about-profile-school", education.display));
+      } else {
+        educationTitle.append(createElement("span", "about-profile-school", education.school));
+        educationTitle.append(createElement("span", "about-profile-period", education.period));
+      }
       educationItem.append(educationTitle);
-      educationItem.append(createElement("p", "about-profile-detail", education.detail));
+      if (!education.display && education.detail) {
+        educationItem.append(createElement("p", "about-profile-detail", education.detail));
+      }
       educationList.append(educationItem);
       educationSection.append(educationList);
       selectors.aboutProfile.append(educationSection);

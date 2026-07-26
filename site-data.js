@@ -12,6 +12,7 @@ window.PORTFOLIO_DATA = {
     aboutRole: "3D 배경 모델러",
     aboutRoleMeta: "3D Game Environment & Prop Artist",
     education: {
+      display: "한양대학교에리카캠퍼스일본학과졸업(2026)",
       school: "한양대학교 에리카 캠퍼스",
       detail: "일본학과 졸업",
       period: "(2026)"
