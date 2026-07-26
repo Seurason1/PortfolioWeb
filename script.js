@@ -27,8 +27,7 @@
     heroRole: document.querySelector("[data-hero-role]"),
     heroCopy: document.querySelector("[data-hero-copy]"),
     aboutTitle: document.querySelector("[data-about-title]"),
-    aboutCopy: document.querySelector("[data-about-copy]"),
-    skillList: document.querySelector("[data-skill-list]"),
+    aboutProfile: document.querySelector("[data-about-profile]"),
     contactLinks: document.querySelector("[data-contact-links]"),
     contactSection: document.querySelector("[data-contact-section]"),
     contactNav: document.querySelector("[data-contact-nav]"),
@@ -75,6 +74,63 @@
     return `${project.title} render ${mediaIndex + 1} of ${project.images.length}`;
   }
 
+  function createAboutProfileHeading(label, meta) {
+    const heading = createElement("div", "about-profile-heading");
+    heading.append(createElement("span", "about-profile-slash", "/"));
+    heading.append(createElement("span", "about-profile-label", label));
+    if (meta) {
+      heading.append(createElement("span", "about-profile-meta", meta));
+    }
+    return heading;
+  }
+
+  function createAboutProfileSection(label, meta) {
+    const section = createElement("section", "about-profile-section");
+    section.append(createAboutProfileHeading(label, meta));
+    return section;
+  }
+
+  function renderAboutProfile(artist) {
+    if (!selectors.aboutProfile) {
+      return;
+    }
+
+    selectors.aboutProfile.innerHTML = "";
+
+    const nameSection = createAboutProfileSection(artist.name, "Name");
+    selectors.aboutProfile.append(nameSection);
+
+    const roleSection = createAboutProfileSection(artist.role, "Role");
+    selectors.aboutProfile.append(roleSection);
+
+    const toolsSection = createAboutProfileSection("사용 프로그램", "Tools");
+    toolsSection.append(createElement("p", "about-profile-tools", artist.skills.join(", ")));
+    selectors.aboutProfile.append(toolsSection);
+
+    const education = artist.education;
+    if (education) {
+      const educationSection = createAboutProfileSection("학력", "Education");
+      const educationList = createElement("div", "about-profile-timeline");
+      const educationItem = createElement("div", "about-profile-timeline-item");
+      const educationTitle = createElement("p", "about-profile-timeline-title");
+
+      educationTitle.append(createElement("span", "about-profile-school", education.school));
+      educationTitle.append(createElement("span", "about-profile-period", education.period));
+      educationItem.append(educationTitle);
+      educationItem.append(createElement("p", "about-profile-detail", education.detail));
+      educationList.append(educationItem);
+      educationSection.append(educationList);
+      selectors.aboutProfile.append(educationSection);
+    }
+
+    const email = artist.email || artist.contact?.email;
+    if (email) {
+      const emailSection = createAboutProfileSection("이메일", "E-mail");
+      emailSection.append(createElement("p", "about-profile-email", email));
+      selectors.aboutProfile.append(emailSection);
+    }
+  }
+
   function renderArtist() {
     const artist = data.artist;
 
@@ -85,15 +141,10 @@
     setText(selectors.heroRole, artist.role);
     setText(selectors.heroCopy, artist.heroCopy);
     setText(selectors.aboutTitle, artist.aboutTitle);
-    setText(selectors.aboutCopy, artist.aboutCopy);
     setText(selectors.year, String(new Date().getFullYear()));
+    renderAboutProfile(artist);
 
     document.title = `${artist.name} | ${artist.role}`;
-
-    selectors.skillList.innerHTML = "";
-    artist.skills.forEach((skill) => {
-      selectors.skillList.append(createElement("span", "skill-pill", skill));
-    });
   }
 
   function getContactItems() {

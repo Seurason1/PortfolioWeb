@@ -8,8 +8,12 @@ window.PORTFOLIO_DATA = {
     name: "Sang Won Kim",
     role: "3D Game Environment & Prop Artist",
     aboutTitle: "3D Artist focused on believable game assets",
-    aboutCopy:
-      "학력: 한양대학교 에리카 캠퍼스 일본학과 졸업 (2026)\n이메일: k0108419@naver.com",
+    education: {
+      school: "한양대학교 에리카 캠퍼스",
+      detail: "일본학과 졸업",
+      period: "(2026)"
+    },
+    email: "k0108419@naver.com",
     skills: [
       "3Ds Max / Blender",
       "ZBrush",

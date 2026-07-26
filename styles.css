@@ -331,10 +331,6 @@ h1 {
   margin: 0;
 }
 
-.about-copy p[data-about-copy] {
-  white-space: pre-line;
-}
-
 .project-grid {
   --project-columns: 3;
   --project-grid-gap: clamp(0.4rem, 0.7vw, 0.7rem);
@@ -464,19 +460,82 @@ h1 {
   gap: 1.15rem;
 }
 
-.skill-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  margin-top: 0.35rem;
+.about-profile {
+  color: var(--ink);
+  display: grid;
+  gap: 1.35rem;
+  margin-top: 0.25rem;
+  max-width: 760px;
 }
 
-.skill-pill {
-  border: 1px solid rgba(138, 160, 134, 0.44);
+.about-profile-section {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.about-profile-heading {
+  align-items: baseline;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  line-height: 1;
+}
+
+.about-profile-slash,
+.about-profile-label {
   color: var(--ink);
-  font-size: 0.82rem;
+  font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+  font-weight: 900;
+}
+
+.about-profile-meta {
+  color: rgba(242, 234, 220, 0.78);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.about-profile-tools,
+.about-profile-email {
+  color: var(--ink);
+  font-size: clamp(0.95rem, 1.5vw, 1.12rem);
   font-weight: 800;
-  padding: 0.55rem 0.72rem;
+  letter-spacing: 0.05em;
+  line-height: 1.45;
+}
+
+.about-profile-timeline {
+  border-left: 2px solid rgba(242, 234, 220, 0.78);
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.35rem;
+  padding-left: 1rem;
+}
+
+.about-profile-timeline-title {
+  align-items: baseline;
+  color: var(--ink);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: clamp(1.02rem, 1.6vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.35;
+}
+
+.about-profile-period {
+  color: rgba(242, 234, 220, 0.78);
+  font-size: 0.86rem;
+  letter-spacing: 0.12em;
+}
+
+.about-profile-detail {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.55;
 }
 
 .contact-layout {
