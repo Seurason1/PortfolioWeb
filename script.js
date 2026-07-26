@@ -8,6 +8,7 @@
     projectCards: [],
     resizeFrame: 0,
     wheelTimer: 0,
+    thumbnailScrollFrame: 0,
     imageDragActive: false,
     imageDragMoved: false,
     imageDragPointerId: null,
@@ -584,9 +585,54 @@
     }, 420);
   }
 
+  function scrollActiveThumbnailIntoView(activeButton) {
+    if (!activeButton) {
+      return;
+    }
+
+    if (state.thumbnailScrollFrame) {
+      window.cancelAnimationFrame(state.thumbnailScrollFrame);
+    }
+
+    state.thumbnailScrollFrame = window.requestAnimationFrame(() => {
+      state.thumbnailScrollFrame = 0;
+
+      if (!activeButton.isConnected || !activeButton.classList.contains("is-active")) {
+        return;
+      }
+
+      const scrollContainer = selectors.thumbnailStrip;
+      const overflowY = window.getComputedStyle(scrollContainer).overflowY;
+      if (overflowY === "visible" || overflowY === "clip") {
+        return;
+      }
+
+      if (scrollContainer.scrollHeight <= scrollContainer.clientHeight + 1) {
+        scrollContainer.scrollTo({ top: 0, behavior: "auto" });
+        return;
+      }
+
+      const containerRect = scrollContainer.getBoundingClientRect();
+      const buttonRect = activeButton.getBoundingClientRect();
+      const targetTop =
+        scrollContainer.scrollTop +
+        buttonRect.top -
+        containerRect.top -
+        (scrollContainer.clientHeight - buttonRect.height) / 2;
+      const maxTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      scrollContainer.scrollTo({
+        top: Math.max(0, Math.min(maxTop, targetTop)),
+        behavior: reduceMotion ? "auto" : "smooth"
+      });
+    });
+  }
+
   function renderThumbnails() {
     const project = data.projects[state.activeProjectIndex];
     selectors.thumbnailStrip.innerHTML = "";
+    let activeButton = null;
 
     project.images.forEach((mediaPath, mediaIndex) => {
       const button = createElement("button", "thumbnail-button");
@@ -595,6 +641,7 @@
       if (mediaIndex === state.activeImageIndex) {
         button.classList.add("is-active");
         button.setAttribute("aria-current", "true");
+        activeButton = button;
       }
 
       const image = document.createElement("img");
@@ -610,6 +657,8 @@
       button.addEventListener("click", () => setImage(mediaIndex));
       selectors.thumbnailStrip.append(button);
     });
+
+    scrollActiveThumbnailIntoView(activeButton);
   }
 
   function handleKeyboard(event) {

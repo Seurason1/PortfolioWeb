@@ -788,6 +788,7 @@ h1 {
 .modal-info {
   align-items: start;
   display: grid;
+  flex: 0 0 auto;
   gap: 1rem;
   grid-template-columns: minmax(0, 1fr) auto;
   padding: 4.25rem clamp(1.4rem, 3vw, 2.25rem) clamp(1.4rem, 3vw, 2.25rem);
@@ -817,6 +818,11 @@ h1 {
 
 .modal-previews {
   border-top: 1px solid var(--line);
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
   padding: 1.2rem clamp(1.4rem, 3vw, 2.25rem) 2rem;
 }
 
@@ -827,6 +833,10 @@ h1 {
 .thumbnail-strip {
   display: grid;
   gap: 0.55rem;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.2rem;
 }
 
 .thumbnail-button {
@@ -911,6 +921,11 @@ h1 {
   .modal-sidebar {
     border-left: 0;
     border-top: 1px solid var(--line);
+    overflow: visible;
+  }
+
+  .modal-previews,
+  .thumbnail-strip {
     overflow: visible;
   }
 }
