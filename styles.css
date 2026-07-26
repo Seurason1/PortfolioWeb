@@ -485,7 +485,7 @@ h1 {
 .about-profile-slash,
 .about-profile-label {
   color: var(--ink);
-  font-size: clamp(1.45rem, 2.55vw, 2.05rem);
+  font-size: clamp(1.34rem, 2.35vw, 1.9rem);
   font-weight: 900;
 }
 
