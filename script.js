@@ -246,16 +246,15 @@
   }
 
   function createProjectCard(project, projectIndex) {
+    const thumbnailRatio = Math.max(0.85, Math.min(1.35, parseThumbnailRatio(project.thumbnailRatio)));
     const card = createElement("button", "project-card");
     card.type = "button";
     card.setAttribute("aria-label", `Open ${project.title} project gallery`);
     card.dataset.projectIndex = String(projectIndex);
-    card.dataset.inverseRatio = String(1 / parseThumbnailRatio(project.thumbnailRatio));
+    card.dataset.inverseRatio = String(1 / thumbnailRatio);
 
     const cover = createElement("div", "project-cover");
-    if (project.thumbnailRatio) {
-      cover.style.aspectRatio = project.thumbnailRatio;
-    }
+    cover.style.aspectRatio = String(thumbnailRatio);
 
     const image = document.createElement("img");
     image.src = project.cover;
