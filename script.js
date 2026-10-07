@@ -211,10 +211,15 @@
       const repositoryMedia = payload.tree
         .filter((item) => item.type === "blob" && /\.(png|jpe?g|webp|mp4|webm)$/i.test(item.path))
         .map((item) => item.path);
+      const availableMedia = new Set(repositoryMedia);
+      const preferredMedia = repositoryMedia.filter((path) =>
+        !/\.(png|jpe?g)$/i.test(path) ||
+        !availableMedia.has(path.replace(/\.(png|jpe?g)$/i, ".webp"))
+      );
 
       data.projects.forEach((project) => {
         const folder = project.cover.slice(0, project.cover.lastIndexOf("/") + 1);
-        const media = repositoryMedia
+        const media = preferredMedia
           .filter((path) => {
             const fileName = path.slice(path.lastIndexOf("/") + 1);
             return path.startsWith(folder) && !/^sum\.(png|jpe?g|webp)$/i.test(fileName);
