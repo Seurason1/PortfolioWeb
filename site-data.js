@@ -38,6 +38,29 @@ window.PORTFOLIO_DATA = {
   },
   projects: [
     {
+      title: "Fantasy Cannon",
+      software: "",
+      slug: "fantasy-cannon",
+      category: "Fantasy environment prop",
+      year: "",
+      productionPeriod: "",
+      description: "Fantasy cannon presented through rendered views and a video showcase.",
+      cover: "portfolio/FantasyCanon/webp/Sum.webp",
+      thumbnailRatio: "1920 / 1080",
+      images: [
+        "portfolio/FantasyCanon/webp/1 (1).webp",
+        "portfolio/FantasyCanon/webp/1 (2).webp",
+        "portfolio/FantasyCanon/webp/1 (3).webp",
+        "portfolio/FantasyCanon/webp/1 (4).webp",
+        "portfolio/FantasyCanon/webp/1 (5).webp",
+        "portfolio/FantasyCanon/webp/1 (6).webp",
+        "portfolio/FantasyCanon/webp/1 (7).webp",
+        "portfolio/FantasyCanon/webp/1 (8).webp",
+        "portfolio/FantasyCanon/webp/1 (9).webp",
+        "portfolio/FantasyCanon/NewLevelSequence.mp4"
+      ]
+    },
+    {
       title: "Goryeo Celadon",
       software: "3DsMax / Substance Painter / Photoshop / Marmoset ",
       slug: "goryeo-celadon",
