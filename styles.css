@@ -816,6 +816,12 @@ h1 {
   text-transform: uppercase;
 }
 
+.modal-info p.modal-software {
+  color: var(--green);
+  font-size: 0.9rem;
+  overflow-wrap: anywhere;
+}
+
 .modal-previews {
   border-top: 1px solid var(--line);
   display: flex;

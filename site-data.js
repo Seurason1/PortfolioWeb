@@ -39,6 +39,7 @@ window.PORTFOLIO_DATA = {
   projects: [
     {
       title: "Goryeo Celadon",
+      software: "",
       slug: "goryeo-celadon",
       category: "Historical ceramic prop",
       year: "2026.05",
@@ -58,6 +59,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Axegun",
+      software: "",
       slug: "axegun",
       category: "Hard-surface prop",
       year: "2026.4",
@@ -77,6 +79,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Stylized Axe",
+      software: "",
       slug: "stylized-axe",
       category: "Stylized weapon prop",
       year: "2026.06",
@@ -93,6 +96,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Chesterfield Chair",
+      software: "",
       slug: "chesterfield-chair",
       category: "Environment prop",
       year: "2026.02",
@@ -110,6 +114,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Hand Drill",
+      software: "",
       slug: "hand-drill",
       category: "Mechanical prop",
       year: "2026.01",
@@ -128,6 +133,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Post Apocalypse Knife",
+      software: "",
       slug: "post-apocalypse-knife",
       category: "Weapon prop",
       year: "2025.11",
@@ -145,6 +151,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Rocks",
+      software: "",
       slug: "rocks",
       category: "Natural environment assets",
       year: "2025-2026",
@@ -166,6 +173,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Vintage Telephone",
+      software: "",
       slug: "vintage-telephone",
       category: "Prop study",
       year: "2025.09",
@@ -182,6 +190,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Wood Chair",
+      software: "",
       slug: "wood-chair",
       category: "Scene prop",
       year: "2025.11",

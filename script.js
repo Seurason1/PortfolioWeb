@@ -42,6 +42,7 @@
     modalCategory: document.querySelector("[data-modal-category]"),
     modalTitle: document.querySelector("[data-modal-title]"),
     modalDescription: document.querySelector("[data-modal-description]"),
+    modalSoftware: document.querySelector("[data-modal-software]"),
     modalCount: document.querySelector("[data-modal-count]"),
     modalYear: document.querySelector("[data-modal-year]"),
     thumbnailStrip: document.querySelector("[data-thumbnail-strip]"),
@@ -419,6 +420,8 @@
     setText(selectors.modalCategory, project.category);
     setText(selectors.modalTitle, project.title);
     setText(selectors.modalDescription, project.description);
+    setText(selectors.modalSoftware, project.software || "");
+    selectors.modalSoftware.hidden = !project.software;
     setText(selectors.modalYear, project.year);
     renderModalMedia();
     renderThumbnails();
@@ -470,8 +473,21 @@
       return;
     }
 
-    const focusX = (event.clientX - rect.left) / rect.width;
-    const focusY = (event.clientY - rect.top) / rect.height;
+    if (!selectors.modalImage.naturalWidth || !rect.width || !rect.height) {
+      return;
+    }
+    const fitScale = Math.min(
+      rect.width / selectors.modalImage.naturalWidth,
+      rect.height / selectors.modalImage.naturalHeight
+    );
+    const visibleWidth = selectors.modalImage.naturalWidth * fitScale;
+    const visibleHeight = selectors.modalImage.naturalHeight * fitScale;
+    const imageLeft = rect.left + (rect.width - visibleWidth) / 2;
+    const imageTop = rect.top + (rect.height - visibleHeight) / 2;
+    const focusX = Math.max(0, Math.min(1, (event.clientX - imageLeft) / visibleWidth));
+    const focusY = Math.max(0, Math.min(1, (event.clientY - imageTop) / visibleHeight));
+    selectors.modalImage.style.width = `${visibleWidth * 1.5}px`;
+    selectors.modalImage.style.height = `${visibleHeight * 1.5}px`;
     selectors.modalStage.classList.add("is-zoomed");
     selectors.modalImage.classList.add("is-zoomed");
     window.requestAnimationFrame(() => {
@@ -497,6 +513,8 @@
     selectors.modalStage.classList.remove("is-zoomed");
     selectors.modalStage.classList.remove("is-dragging");
     selectors.modalImage.classList.remove("is-zoomed");
+    selectors.modalImage.style.removeProperty("width");
+    selectors.modalImage.style.removeProperty("height");
     selectors.modalStage.scrollLeft = 0;
     selectors.modalStage.scrollTop = 0;
   }
