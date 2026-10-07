@@ -219,11 +219,15 @@
       );
 
       data.projects.forEach((project) => {
-        const folder = project.cover.slice(0, project.cover.lastIndexOf("/") + 1);
+        const coverFolder = project.cover.slice(0, project.cover.lastIndexOf("/") + 1);
+        const folder = coverFolder.replace(/webp\/$/i, "");
         const media = preferredMedia
           .filter((path) => {
             const fileName = path.slice(path.lastIndexOf("/") + 1);
-            return path.startsWith(folder) && !/^sum\.(png|jpe?g|webp)$/i.test(fileName);
+            const relativePath = path.slice(folder.length);
+            return path.startsWith(folder) &&
+              !relativePath.startsWith("originals/") &&
+              !/^sum\.(png|jpe?g|webp)$/i.test(fileName);
           })
           .sort((first, second) =>
             first.localeCompare(second, undefined, { numeric: true, sensitivity: "base" })

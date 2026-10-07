@@ -13,11 +13,18 @@ def main():
         for source in sorted((ROOT / folder).rglob("*")):
             if source.suffix.lower() not in (".png", ".jpg", ".jpeg"):
                 continue
-            backup = BACKUP / source.relative_to(ROOT)
+            relative = source.relative_to(ROOT)
+            if relative.parts[0] == "portfolio" and source.parent.name == "originals":
+                backup_relative = Path(*relative.parts[:2]) / source.name
+                target = source.parent.parent / "webp" / source.with_suffix(".webp").name
+            else:
+                backup_relative = relative
+                target = source.with_suffix(".webp")
+            backup = BACKUP / backup_relative
             backup.parent.mkdir(parents=True, exist_ok=True)
             if not backup.exists():
                 shutil.copy2(source, backup)
-            target = source.with_suffix(".webp")
+            target.parent.mkdir(parents=True, exist_ok=True)
             with Image.open(source) as original:
                 image = ImageOps.exif_transpose(original)
                 image = image.convert("RGBA" if "A" in image.getbands() else "RGB")
