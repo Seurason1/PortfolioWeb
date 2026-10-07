@@ -39,7 +39,7 @@ window.PORTFOLIO_DATA = {
   projects: [
     {
       title: "Goryeo Celadon",
-      software: "",
+      software: "3DsMax / Substance Painter / Photoshop / Marmoset ",
       slug: "goryeo-celadon",
       category: "Historical ceramic prop",
       year: "2026.05",
@@ -59,7 +59,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Axegun",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Photoshop / Marmoset",
       slug: "axegun",
       category: "Hard-surface prop",
       year: "2026.4",
@@ -79,7 +79,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Stylized Axe",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Photoshop / Marmoset",
       slug: "stylized-axe",
       category: "Stylized weapon prop",
       year: "2026.06",
@@ -96,7 +96,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Chesterfield Chair",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Photoshop / Marmoset",
       slug: "chesterfield-chair",
       category: "Environment prop",
       year: "2026.02",
@@ -114,7 +114,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Hand Drill",
-      software: "",
+      software: "3DsMax / Substance Painter / Photoshop / Marmoset",
       slug: "hand-drill",
       category: "Mechanical prop",
       year: "2026.01",
@@ -133,7 +133,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Post Apocalypse Knife",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Photoshop / Marmoset",
       slug: "post-apocalypse-knife",
       category: "Weapon prop",
       year: "2025.11",
@@ -151,7 +151,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Rocks",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Photoshop / Marmoset / Knald",
       slug: "rocks",
       category: "Natural environment assets",
       year: "2025-2026",
@@ -173,7 +173,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Vintage Telephone",
-      software: "",
+      software: "3DsMax / Substance Painter / Photoshop / Marmoset / Unreal Engine 5",
       slug: "vintage-telephone",
       category: "Prop study",
       year: "2025.09",
@@ -190,7 +190,7 @@ window.PORTFOLIO_DATA = {
     },
     {
       title: "Wood Chair",
-      software: "",
+      software: "3DsMax / Substance Painter / Photoshop / Marmoset / Unreal Engine 5",
       slug: "wood-chair",
       category: "Scene prop",
       year: "2025.11",
