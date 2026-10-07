@@ -121,8 +121,8 @@ window.PORTFOLIO_DATA = {
       productionPeriod: "2026.01",
       description:
         "오래되어 페인트가 벗겨진 핸드드릴입니다. 페인트, 금속, 나무 텍스쳐링의 연습에 집중하여 만들었습니다",
-      cover: "portfolio/Hand Drill/webp/Sum.webp",
-      thumbnailRatio: "1255 / 869",
+      cover: "portfolio/Hand Drill/webp/Sum.webp?v=20261007e",
+      thumbnailRatio: "710 / 450",
       images: [
         "portfolio/Hand Drill/webp/5 (1).webp",
         "portfolio/Hand Drill/webp/5 (2).webp",
