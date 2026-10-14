@@ -1,4 +1,6 @@
 window.PORTFOLIO_DATA = {
+  mediaVersion: "20261014b",
+  heroVideos: ["Main_title/3.mp4", "Main_title/NewLevelSequence.mp4"],
   repository: {
     owner: "Seurason1",
     name: "PortfolioWeb",

@@ -25,6 +25,7 @@
     footerName: document.querySelector("[data-footer-name]"),
     role: document.querySelector("[data-role]"),
     heroTitle: document.querySelector("[data-hero-title]"),
+    heroVideo: document.querySelector("[data-hero-video]"),
     heroRole: document.querySelector("[data-hero-role]"),
     heroCopy: document.querySelector("[data-hero-copy]"),
     aboutProfile: document.querySelector("[data-about-profile]"),
@@ -69,6 +70,54 @@
 
   function isVideoPath(path) {
     return /\.(mp4|webm)$/i.test(path);
+  }
+
+  let heroPlaylist = [];
+  let heroVideoIndex = 0;
+
+  function videoUrl(path) {
+    return data.mediaVersion ? `${path}?v=${encodeURIComponent(data.mediaVersion)}` : path;
+  }
+
+  function playHeroVideo() {
+    const video = selectors.heroVideo;
+    if (!video || !heroPlaylist.length) {
+      return;
+    }
+    video.muted = true;
+    video.loop = false;
+    video.src = videoUrl(heroPlaylist[heroVideoIndex]);
+    video.load();
+    video.play().catch(() => {});
+  }
+
+  function setHeroPlaylist(paths) {
+    const sorted = [...new Set(paths)].sort((a, b) =>
+      a.localeCompare(b, undefined, { numeric: true, sensitivity: "base" })
+    );
+    if (!sorted.length || JSON.stringify(sorted) === JSON.stringify(heroPlaylist)) {
+      return;
+    }
+    const currentPath = heroPlaylist[heroVideoIndex];
+    heroPlaylist = sorted;
+    const currentIndex = sorted.indexOf(currentPath);
+    heroVideoIndex = Math.max(0, currentIndex);
+    if (currentIndex < 0) {
+      playHeroVideo();
+    }
+  }
+
+  function initHeroPlaylist() {
+    if (!selectors.heroVideo) {
+      return;
+    }
+    selectors.heroVideo.addEventListener("ended", () => {
+      if (heroPlaylist.length) {
+        heroVideoIndex = (heroVideoIndex + 1) % heroPlaylist.length;
+        playHeroVideo();
+      }
+    });
+    setHeroPlaylist(data.heroVideos || []);
   }
 
   function getProjectMediaAlt(project, mediaIndex) {
@@ -213,6 +262,9 @@
         .filter((item) => item.type === "blob" && /\.(png|jpe?g|webp|mp4|webm)$/i.test(item.path))
         .map((item) => item.path);
       const availableMedia = new Set(repositoryMedia);
+      setHeroPlaylist(repositoryMedia.filter((path) =>
+        /^Main_title\/[^/]+\.(mp4|webm)$/i.test(path)
+      ));
       const preferredMedia = repositoryMedia.filter((path) =>
         !/\.(png|jpe?g)$/i.test(path) ||
         !availableMedia.has(path.replace(/\.(png|jpe?g)$/i, ".webp"))
@@ -443,7 +495,7 @@
     selectors.modalVideo.hidden = !showVideo;
 
     if (showVideo) {
-      selectors.modalVideo.src = mediaPath;
+      selectors.modalVideo.src = videoUrl(mediaPath);
       selectors.modalVideo.load();
       selectors.modalVideo.play().catch(() => {});
     } else {
@@ -752,6 +804,7 @@
     }
 
     renderArtist();
+    initHeroPlaylist();
     renderContactLinks();
     renderProjects();
     bindEvents();
