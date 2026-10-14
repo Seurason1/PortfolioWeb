@@ -45,8 +45,8 @@ window.PORTFOLIO_DATA = {
       year: "",
       productionPeriod: "",
       description: "Fantasy cannon presented through rendered views and a video showcase.",
-      cover: "portfolio/FantasyCanon/webp/Sum.webp",
-      thumbnailRatio: "1920 / 1080",
+      cover: "portfolio/FantasyCanon/webp/Sum.webp?v=20261014a",
+      thumbnailRatio: "868 / 588",
       images: [
         "portfolio/FantasyCanon/webp/1 (1).webp",
         "portfolio/FantasyCanon/webp/1 (2).webp",

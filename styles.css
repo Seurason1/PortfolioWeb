@@ -333,7 +333,7 @@ h1 {
 
 .project-grid {
   --project-columns: 3;
-  --project-grid-gap: clamp(0.4rem, 0.7vw, 0.7rem);
+  --project-grid-gap: 4px;
   align-items: flex-start;
   display: flex;
   gap: var(--project-grid-gap);
@@ -382,9 +382,11 @@ h1 {
 }
 
 .project-cover img {
+  display: block;
   height: 100%;
-  object-fit: contain;
-  position: relative;
+  inset: 0;
+  object-fit: cover;
+  position: absolute;
   width: 100%;
 }
 
