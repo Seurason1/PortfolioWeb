@@ -1,5 +1,5 @@
 window.PORTFOLIO_DATA = {
-  mediaVersion: "20261014b",
+  mediaVersion: "20261028a",
   heroVideos: ["Main_title/3.mp4", "Main_title/NewLevelSequence.mp4"],
   repository: {
     owner: "Seurason1",
@@ -41,12 +41,12 @@ window.PORTFOLIO_DATA = {
   projects: [
     {
       title: "Fantasy Cannon",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Unreal Engine 5",
       slug: "fantasy-cannon",
       category: "Fantasy environment prop",
       year: "",
       productionPeriod: "",
-      description: "Fantasy cannon presented through rendered views and a video showcase.",
+      description: "판타지 세계관에서 쓰일법한 고정형 대포를 만들어 봤습니다..",
       cover: "portfolio/FantasyCanon/webp/Sum.webp?v=20261014a",
       thumbnailRatio: "868 / 588",
       images: [
@@ -59,7 +59,7 @@ window.PORTFOLIO_DATA = {
         "portfolio/FantasyCanon/webp/1 (7).webp",
         "portfolio/FantasyCanon/webp/1 (8).webp",
         "portfolio/FantasyCanon/webp/1 (9).webp",
-        "portfolio/FantasyCanon/NewLevelSequence.mp4"
+        "portfolio/FantasyCanon/FantasyCannonRender.mp4"
       ]
     },
     {
