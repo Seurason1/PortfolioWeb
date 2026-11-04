@@ -75,8 +75,13 @@
   let heroPlaylist = [];
   let heroVideoIndex = 0;
 
-  function videoUrl(path) {
-    return data.mediaVersion ? `${path}?v=${encodeURIComponent(data.mediaVersion)}` : path;
+  function mediaUrl(path) {
+    if (!data.mediaVersion) {
+      return path;
+    }
+    const url = new URL(path, document.baseURI);
+    url.searchParams.set("v", data.mediaVersion);
+    return url.href;
   }
 
   function playHeroVideo() {
@@ -86,7 +91,7 @@
     }
     video.muted = true;
     video.loop = false;
-    video.src = videoUrl(heroPlaylist[heroVideoIndex]);
+    video.src = mediaUrl(heroPlaylist[heroVideoIndex]);
     video.load();
     video.play().catch(() => {});
   }
@@ -319,7 +324,7 @@
     cover.style.aspectRatio = String(thumbnailRatio);
 
     const image = document.createElement("img");
-    image.src = project.cover;
+    image.src = mediaUrl(project.cover);
     image.alt = `${project.title} cover render`;
     image.loading = "lazy";
     cover.append(image);
@@ -495,12 +500,12 @@
     selectors.modalVideo.hidden = !showVideo;
 
     if (showVideo) {
-      selectors.modalVideo.src = videoUrl(mediaPath);
+      selectors.modalVideo.src = mediaUrl(mediaPath);
       selectors.modalVideo.load();
       selectors.modalVideo.play().catch(() => {});
     } else {
       selectors.modalVideo.removeAttribute("src");
-      selectors.modalImage.src = mediaPath;
+      selectors.modalImage.src = mediaUrl(mediaPath);
       selectors.modalImage.alt = getProjectMediaAlt(project, state.activeImageIndex);
     }
 
@@ -723,7 +728,7 @@
       }
 
       const image = document.createElement("img");
-      image.src = isVideoPath(mediaPath) ? project.cover : mediaPath;
+      image.src = mediaUrl(isVideoPath(mediaPath) ? project.cover : mediaPath);
       image.alt = "";
       image.loading = "lazy";
       button.append(image);

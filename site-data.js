@@ -1,5 +1,5 @@
 window.PORTFOLIO_DATA = {
-  mediaVersion: "20261028a",
+  mediaVersion: "20261104c",
   heroVideos: ["Main_title/3.mp4", "Main_title/NewLevelSequence.mp4"],
   repository: {
     owner: "Seurason1",
@@ -50,6 +50,7 @@ window.PORTFOLIO_DATA = {
       cover: "portfolio/Stone Lantern/webp/Sum.webp",
       thumbnailRatio: "454 / 644",
       images: [
+        "portfolio/Stone Lantern/webp/0.webp",
         "portfolio/Stone Lantern/webp/1.webp",
         "portfolio/Stone Lantern/webp/2.webp",
         "portfolio/Stone Lantern/webp/3.webp",
@@ -57,7 +58,8 @@ window.PORTFOLIO_DATA = {
         "portfolio/Stone Lantern/webp/5.webp",
         "portfolio/Stone Lantern/webp/6.webp",
         "portfolio/Stone Lantern/webp/7.webp",
-        "portfolio/Stone Lantern/webp/8.webp"
+        "portfolio/Stone Lantern/webp/8.webp",
+        "portfolio/Stone Lantern/webp/9.webp"
       ]
     },
     {
