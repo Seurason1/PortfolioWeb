@@ -40,6 +40,27 @@ window.PORTFOLIO_DATA = {
   },
   projects: [
     {
+      title: "Stone Lantern",
+      software: "",
+      slug: "stone-lantern",
+      category: "Environment prop",
+      year: "",
+      productionPeriod: "",
+      description: "Stone lantern environment prop presented through detailed renders.",
+      cover: "portfolio/Stone Lantern/webp/Sum.webp",
+      thumbnailRatio: "454 / 644",
+      images: [
+        "portfolio/Stone Lantern/webp/1.webp",
+        "portfolio/Stone Lantern/webp/2.webp",
+        "portfolio/Stone Lantern/webp/3.webp",
+        "portfolio/Stone Lantern/webp/4.webp",
+        "portfolio/Stone Lantern/webp/5.webp",
+        "portfolio/Stone Lantern/webp/6.webp",
+        "portfolio/Stone Lantern/webp/7.webp",
+        "portfolio/Stone Lantern/webp/8.webp"
+      ]
+    },
+    {
       title: "Fantasy Cannon",
       software: "3DsMax / Zbrush / Substance Painter / Unreal Engine 5",
       slug: "fantasy-cannon",
