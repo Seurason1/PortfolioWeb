@@ -41,12 +41,12 @@ window.PORTFOLIO_DATA = {
   projects: [
     {
       title: "Stone Lantern",
-      software: "",
+      software: "3DsMax / Zbrush / Substance Painter / Unreal Engine 5",
       slug: "stone-lantern",
       category: "Environment prop",
-      year: "",
-      productionPeriod: "",
-      description: "Stone lantern environment prop presented through detailed renders.",
+      year: "2026",
+      productionPeriod: "2026.10",
+      description: "6M 정도 크기의 석등을 제작했습니다. 거대한 크기로 인해 텍셀밀도가 낮아지는 것을 염두하여 RGB마스크 워크플로우를 활용해 봤습니다. 베이스를 한 스캔 타일 텍스처 1세트, RGBA마스크맵 1장, 노멀맵 1장을 사용했습니다.  ",
       cover: "portfolio/Stone Lantern/webp/Sum.webp",
       thumbnailRatio: "454 / 644",
       images: [
@@ -67,8 +67,8 @@ window.PORTFOLIO_DATA = {
       software: "3DsMax / Zbrush / Substance Painter / Unreal Engine 5",
       slug: "fantasy-cannon",
       category: "Fantasy environment prop",
-      year: "",
-      productionPeriod: "",
+      year: "2026",
+      productionPeriod: "2026.09",
       description: "판타지 세계관에서 쓰일법한 고정형 대포를 만들어 봤습니다..",
       cover: "portfolio/FantasyCanon/webp/Sum.webp?v=20261014a",
       thumbnailRatio: "868 / 588",
